@@ -1172,6 +1172,8 @@ bool ProtocolParty<FieldType>::preparationPhase()
     randomSharesArray.resize(numOfRandomShares);
 
     randomSharesOffset = 0;
+
+    randomOffset = 0;
     //generate enough random shares for the AES key
     generateRandomShares(numOfRandomShares, randomSharesArray);
 
