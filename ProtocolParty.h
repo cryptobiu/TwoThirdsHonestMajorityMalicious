@@ -40,6 +40,8 @@ private:
      * T - number of malicious
      */
 
+    bool isHonest = false;
+
     int N, M, T, m_partyId;
     int times; //number of times to run the run function
     int iteration; //number of the current iteration
@@ -226,22 +228,31 @@ public:
 
 
 template <class FieldType>
-ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCHonestMajorityNoTriples", argc, argv)
+ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCHonestMajorityNoTriplesYehuda", argc, argv)
 {
     string circuitFile = this->getParser().getValueByKey(arguments, "circuitFile");
     this->times = stoi(this->getParser().getValueByKey(arguments, "internalIterationsNumber"));
     string fieldType = this->getParser().getValueByKey(arguments, "fieldType");
     m_partyId = stoi(this->getParser().getValueByKey(arguments, "partyID"));
     int n = stoi(this->getParser().getValueByKey(arguments, "partiesNumber"));
+    isHonest = stoi(this->getParser().getValueByKey(arguments, "isHonest"));
     string outputTimerFileName = circuitFile + "Times" + to_string(m_partyId) + fieldType + ".csv";
     ProtocolTimer p(times, outputTimerFileName);
 
     this->protocolTimer = new ProtocolTimer(times, outputTimerFileName);
 
-    vector<string> subTaskNames{"Offline", "preparationPhase", "Online", "inputPhase", "ComputePhase", "VerificationPhase", "outputPhase"};
-    timer = new Measurement(*this, subTaskNames);
+    if(isHonest==false){
+        vector<string> subTaskNames{"Offline", "preparationPhase", "Online", "inputPhase", "ComputePhase",
+                                    "VerificationPhase", "outputPhase"};
+        timer = new Measurement(*this, subTaskNames);
+    }
+    else{
+        vector<string> subTaskNames{"Offline", "preparationPhase", "Online", "inputPhase", "ComputePhase",
+                                    "outputPhase"};
+        timer = new Measurement(*this, subTaskNames);
+    }
 
-    if(fieldType.compare("ZpMersenne") == 0) {
+    if(fieldType.compare("ZpMersenne31") == 0) {
         field = new TemplateField<FieldType>(2147483647);
     } else if(fieldType.compare("ZpMersenne61") == 0) {
         field = new TemplateField<FieldType>(0);
@@ -255,10 +266,10 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
 
 
     N = n;
-    T = n/2 - 1;
+    T = n/3 - 1;
     this->inputsFile = this->getParser().getValueByKey(arguments, "inputFile");
     this->outputFile = this->getParser().getValueByKey(arguments, "outputFile");
-    if(n%2 > 0)
+    if(n%3 > 0)
     {
         T++;
     }
@@ -406,16 +417,18 @@ void ProtocolParty<FieldType>::runOnline() {
         cout << "time in milliseconds computationPhase: " << duration << endl;
     }
 
-    t1 = high_resolution_clock::now();
-    timer->startSubTask("VerificationPhase", iteration);
-    verificationPhase();
-    timer->endSubTask("VerificationPhase", iteration);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(t2-t1).count();
-    protocolTimer->verificationPhaseArr[iteration] = duration;
+    if(isHonest==false) {
+        t1 = high_resolution_clock::now();
+        timer->startSubTask("VerificationPhase", iteration);
+        verificationPhase();
+        timer->endSubTask("VerificationPhase", iteration);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<milliseconds>(t2 - t1).count();
+        protocolTimer->verificationPhaseArr[iteration] = duration;
 
-    if(flag_print_timings) {
-        cout << "time in milliseconds verificationPhase: " << duration << endl;
+        if (flag_print_timings) {
+            cout << "time in milliseconds verificationPhase: " << duration << endl;
+        }
     }
 
     t1 = high_resolution_clock::now();
@@ -1162,7 +1175,8 @@ bool ProtocolParty<FieldType>::preparationPhase()
     //generate enough random shares for the AES key
     generateRandomShares(numOfRandomShares, randomSharesArray);
 
-    generateSecureDoubleSharings(3*delta + keysize);
+    if(isHonest==false)
+        generateSecureDoubleSharings(3*delta + keysize);
 
 
     //run offline for all the future multiplications including the multiplication of the protocol
