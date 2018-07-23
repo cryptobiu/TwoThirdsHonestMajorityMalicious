@@ -1,0 +1,3 @@
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles/rebuild_cache.dir
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles/edit_cache.dir
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir
