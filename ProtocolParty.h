@@ -1855,16 +1855,15 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
         cout << "time in milliseconds for getting random bytes: " << duration << endl;
     }
 
-    unsigned long *randBytesLong = (unsigned long *)randBytes;
 
-    for(int i=0; i<numOfRandomElements; i++){
-        randBytes[8*i+7] = randBytes[8*i+7]>>(64 - fieldSizeBits);
-    }
 
     t1 = high_resolution_clock::now();
 
     if(isLongRandoms) {
-        memcpy(randomElementsToFill.data() , randBytesLong, numOfRandomElements * size);
+        for(int i=0; i<numOfRandomElements; i++){
+            randBytes[8*i+7] = randBytes[8*i+7]>>(64 - fieldSizeBits);
+        }
+        memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
 
 //        for (int i = 0; i < numOfRandomElements; i++) {
 //
@@ -1876,9 +1875,10 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
 //        }
     }
       else{
-        for (int i = 0; i < numOfRandomElements; i++) {
-            randomElementsToFill[i] = field->GetElement(prg.getRandom32());
+        for(int i=0; i<numOfRandomElements; i++){
+            randBytes[4*i+3] = randBytes[4*i+3]>>(32 - fieldSizeBits);
         }
+        memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
     }
 
     t2 = high_resolution_clock::now();
