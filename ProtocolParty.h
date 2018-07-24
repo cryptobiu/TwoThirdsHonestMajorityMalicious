@@ -83,6 +83,11 @@ private:
     vector<FieldType> gateShareArr; // my share of the gate (for all gates)
     vector<FieldType> alpha; // N distinct non-zero field elements
 
+
+    vector<FieldType> wSharesForVerification;
+    vector<FieldType> multGatesSharesForVerification;
+    vector<FieldType> randomElementsForVerification;
+
     vector<long> myInputs;
 
 public:
@@ -1160,6 +1165,12 @@ void ProtocolParty<FieldType>::initializationPhase()
 
     }
 
+    int delta =   (5 + field->getElementSizeInBytes() - 1) / field->getElementSizeInBytes();
+    randomElementsForVerification.resize(circuit.getNrOfMultiplicationGates()*delta +
+                                         (circuit.getNrOfMultiplicationGates() + circuit.getNrOfInputGates())*delta);
+
+    wSharesForVerification.resize(circuit.getNrOfInputGates());
+    multGatesSharesForVerification.resize(circuit.getNrOfMultiplicationGates()*2);
 
 
 }
@@ -1537,8 +1548,7 @@ void ProtocolParty<FieldType>::verificationPhase() {
     int numOfInputGates = circuit.getNrOfInputGates();
     int numOfMultGates = circuit.getNrOfMultiplicationGates();
     auto t1 = high_resolution_clock::now();
-    vector<FieldType> wShares(numOfInputGates);
-    vector<FieldType> multGatesShares(numOfMultGates*2);
+
     //FieldType *multGatesShares = new FieldType[numOfMultGates*3];
 
     //1. prepare random values by generating a key
@@ -1549,10 +1559,10 @@ void ProtocolParty<FieldType>::verificationPhase() {
     if(flag_print_timings) {
         cout << "time in milliseconds for generating key: " << duration << endl;
     }
-    vector<FieldType> randomElements(numOfMultGates*delta + (numOfMultGates+ numOfInputGates)*delta);
+
 
     t1 = high_resolution_clock::now();
-    generatePseudoRandomElements(key, randomElements, randomElements.size());
+    generatePseudoRandomElements(key, randomElementsForVerification, randomElementsForVerification.size());
 
     t2 = high_resolution_clock::now();
 
@@ -1571,7 +1581,7 @@ void ProtocolParty<FieldType>::verificationPhase() {
         auto gate = circuit.getGates()[k];
 
         if (gate.gateType == INPUT) {
-            wShares[index] = gateShareArr[gate.output];
+            wSharesForVerification[index] = gateShareArr[gate.output];
 
             index++;
         }
@@ -1588,11 +1598,11 @@ void ProtocolParty<FieldType>::verificationPhase() {
         auto gate = circuit.getGates()[k];
         if (gate.gateType == MULT) {
 
-            multGatesShares[2*index] = gateShareArr[gate.input1]*gateShareArr[gate.input2];
+            multGatesSharesForVerification[2*index] = gateShareArr[gate.input1]*gateShareArr[gate.input2];
 
             //multGatesShares[2*index+1] = gateShareArr[gate.input2];
 
-            multGatesShares[2*index+1] = gateShareArr[gate.output];
+            multGatesSharesForVerification[2*index+1] = gateShareArr[gate.output];
             index++;
         }
 
@@ -1617,7 +1627,7 @@ void ProtocolParty<FieldType>::verificationPhase() {
         uShares[iter] = *field->GetZero();
         for (int i = 0; i < numOfInputGates; i++) {
 
-            uShares[iter] += randomElements[index] * wShares[i];
+            uShares[iter] += randomElementsForVerification[index] * wSharesForVerification[i];
             index++;
 
         }
@@ -1625,7 +1635,7 @@ void ProtocolParty<FieldType>::verificationPhase() {
 
         for (int i = 0; i < numOfMultGates; i++) {
 
-            uShares[iter] += randomElements[index]*multGatesShares[2*i + 1];
+            uShares[iter] += randomElementsForVerification[index]*multGatesSharesForVerification[2*i + 1];
         }
 
         uShares[iter] += secureRandomTShares[randomOffset];
@@ -1653,7 +1663,7 @@ void ProtocolParty<FieldType>::verificationPhase() {
         v2TShares[iter] = *field->GetZero();
         for (int i = 0; i < numOfMultGates; i++) {
 
-            v2TShares[iter] += randomElements[index] * (multGatesShares[i*2] - multGatesShares[i*2+1]);
+            v2TShares[iter] += randomElementsForVerification[index] * (multGatesSharesForVerification[i*2] - multGatesSharesForVerification[i*2+1]);
             index++;
 
         }

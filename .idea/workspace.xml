@@ -90,8 +90,8 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30480">
-              <caret line="1605" column="51" selection-start-line="1605" selection-start-column="42" selection-end-line="1605" selection-end-column="51" />
+            <state relative-caret-position="174">
+              <caret line="1665" column="139" selection-start-line="1665" selection-start-column="139" selection-end-line="1665" selection-end-column="139" />
               <folding>
                 <element signature="e#51#70#0" expanded="true" />
                 <element signature="e#819#836#0" expanded="true" />
@@ -137,13 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>preparation</find>
-      <find>checkZero</find>
-      <find>multGatesShares</find>
-      <find>parser</find>
-      <find>inputphase</find>
-      <find>parameters</find>
-      <find>parseArguments</find>
       <find>T =</find>
       <find>preparationphas</find>
       <find>measure</find>
@@ -167,6 +160,13 @@
       <find>computationph</find>
       <find>processMultiplications</find>
       <find>processMultDN</find>
+      <find>verification</find>
+      <find>verificationp</find>
+      <find>initia</find>
+      <find>randomElements</find>
+      <find>multGatesShares</find>
+      <find>initializ</find>
+      <find>initializationPhase</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -497,20 +497,20 @@
       <workItem from="1531109629988" duration="10580000" />
       <workItem from="1531814768539" duration="2489000" />
       <workItem from="1531817925788" duration="7658000" />
-      <workItem from="1531890057729" duration="35428000" />
+      <workItem from="1531890057729" duration="38310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244506000" />
+    <option name="totallyTimeSpent" value="247388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20507285" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08256881" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.1718107" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.37654322" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.20781893" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -540,17 +540,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1532</line>
+          <line>1543</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1585</line>
+          <line>1595</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1611</line>
+          <line>1621</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -1014,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30480">
-          <caret line="1605" column="51" selection-start-line="1605" selection-start-column="42" selection-end-line="1605" selection-end-column="51" />
+        <state relative-caret-position="174">
+          <caret line="1665" column="139" selection-start-line="1665" selection-start-column="139" selection-end-line="1665" selection-end-column="139" />
           <folding>
             <element signature="e#51#70#0" expanded="true" />
             <element signature="e#819#836#0" expanded="true" />
