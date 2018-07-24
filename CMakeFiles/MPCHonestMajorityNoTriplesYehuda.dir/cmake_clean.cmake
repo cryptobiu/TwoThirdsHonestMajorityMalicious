@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o"
   "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o"
   "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o"
+  "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o"
   "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o"
   "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o"
   "MPCHonestMajorityNoTriplesYehuda.pdb"

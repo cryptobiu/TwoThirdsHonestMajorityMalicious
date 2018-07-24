@@ -9,7 +9,7 @@ INCLUDE_DIRECTORIES($ENV{HOME} $ENV{HOME}/libscapi/install/include
 
 set(SOURCE_FILES main.cpp
         ProtocolParty.cpp ProtocolParty.h ProtocolTimer.cpp ProtocolTimer.h
-        ZpKaratsubaElement.cpp ZpKaratsubaElement.h
+        ZpKaratsubaElement.cpp ZpKaratsubaElement.h GF2_8LookupTable.cpp GF2_8LookupTable.h
         HashEncrypt.cpp HashEncrypt.h HashAbstract.h TemplateField.cpp)
 
 

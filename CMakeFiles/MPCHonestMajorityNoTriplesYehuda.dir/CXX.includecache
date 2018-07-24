@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.cpp
+GF2_8LookupTable.h
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.h
+
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.h
+NTL/GF2E.h
+-
+NTL/GF2X.h
+-
+NTL/ZZ_p.h
+-
+NTL/GF2XFactoring.h
+-
+libscapi/include/infra/Common.hpp
+-
+
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/HashAbstract.h
 openssl/evp.h
 -
@@ -83,6 +99,8 @@ TemplateField.h
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/TemplateField.h
 ZpKaratsubaElement.h
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/ZpKaratsubaElement.h
+GF2_8LookupTable.h
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.h
 
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/TemplateField.h
 stdint.h
@@ -123,6 +141,8 @@ ProtocolParty.h
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/ProtocolParty.h
 ZpKaratsubaElement.h
 /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/ZpKaratsubaElement.h
+GF2_8LookupTable.h
+/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.h
 smmintrin.h
 -
 inttypes.h

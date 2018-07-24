@@ -123,6 +123,33 @@ MPCHonestMajorityNoTriplesYehuda/fast:
 	$(MAKE) -f CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build
 .PHONY : MPCHonestMajorityNoTriplesYehuda/fast
 
+GF2_8LookupTable.o: GF2_8LookupTable.cpp.o
+
+.PHONY : GF2_8LookupTable.o
+
+# target to build an object file
+GF2_8LookupTable.cpp.o:
+	$(MAKE) -f CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o
+.PHONY : GF2_8LookupTable.cpp.o
+
+GF2_8LookupTable.i: GF2_8LookupTable.cpp.i
+
+.PHONY : GF2_8LookupTable.i
+
+# target to preprocess a source file
+GF2_8LookupTable.cpp.i:
+	$(MAKE) -f CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.i
+.PHONY : GF2_8LookupTable.cpp.i
+
+GF2_8LookupTable.s: GF2_8LookupTable.cpp.s
+
+.PHONY : GF2_8LookupTable.s
+
+# target to generate assembly for a file
+GF2_8LookupTable.cpp.s:
+	$(MAKE) -f CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.s
+.PHONY : GF2_8LookupTable.cpp.s
+
 HashEncrypt.o: HashEncrypt.cpp.o
 
 .PHONY : HashEncrypt.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... MPCHonestMajorityNoTriplesYehuda"
+	@echo "... GF2_8LookupTable.o"
+	@echo "... GF2_8LookupTable.i"
+	@echo "... GF2_8LookupTable.s"
 	@echo "... HashEncrypt.o"
 	@echo "... HashEncrypt.i"
 	@echo "... HashEncrypt.s"

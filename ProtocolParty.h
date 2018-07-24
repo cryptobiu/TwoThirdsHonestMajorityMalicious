@@ -40,7 +40,7 @@ private:
      * T - number of malicious
      */
 
-    bool isHonest = false;
+    bool isHonest = true;
 
     int N, M, T, m_partyId;
     int times; //number of times to run the run function
@@ -51,7 +51,7 @@ private:
     TemplateField<FieldType> *field;
     vector<shared_ptr<ProtocolPartyData>>  parties;
     vector<FieldType> randomTAnd2TShares;
-    vector<FieldType> randomSharesArray;
+    //vector<FieldType> randomSharesArray;
     vector<FieldType> secureRandomTShares;
     vector<FieldType> secureRandom2TShares;
     int randomOffset = 0;
@@ -256,7 +256,9 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
         field = new TemplateField<FieldType>(2147483647);
     } else if(fieldType.compare("ZpMersenne61") == 0) {
         field = new TemplateField<FieldType>(0);
-    } else if(fieldType.compare("ZpKaratsuba") == 0) {
+    }else if(fieldType.compare("GF2_8LookupTable") == 0) {
+        field = new TemplateField<FieldType>(0);
+    }else if(fieldType.compare("ZpKaratsuba") == 0) {
         field = new TemplateField<FieldType>(0);
     } else if(fieldType.compare("GF2E") == 0) {
         field = new TemplateField<FieldType>(8);
@@ -1169,13 +1171,13 @@ bool ProtocolParty<FieldType>::preparationPhase()
     int keysize = 16/field->getElementSizeInBytes() + 1;
 
     int numOfRandomShares = keysize;
-    randomSharesArray.resize(numOfRandomShares);
+    //randomSharesArray.resize(numOfRandomShares);
 
     randomSharesOffset = 0;
 
     randomOffset = 0;
     //generate enough random shares for the AES key
-    generateRandomShares(numOfRandomShares, randomSharesArray);
+    //generateRandomShares(numOfRandomShares, randomSharesArray);
 
     if(isHonest==false)
         generateSecureDoubleSharings(3*delta + keysize);
@@ -1727,7 +1729,7 @@ bool ProtocolParty<FieldType>::checkZero(int numOfChecks, vector<FieldType> &toC
 
       //calc the number of elements needed for 128 bit AES key
       int numOfRandomShares = 16/field->getElementSizeInBytes() + 1;
-      vector<FieldType> randomSharesArray(numOfRandomShares);
+      //vector<FieldType> randomSharesArray(numOfRandomShares);
       vector<FieldType> aesArray(numOfRandomShares);
       vector<byte> aesKey(numOfRandomShares*fieldByteSize);
 
@@ -1815,6 +1817,7 @@ template <class FieldType>
 void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKey, vector<FieldType> &randomElementsToFill, int numOfRandomElements){
 
 
+
     int fieldSize = field->getElementSizeInBytes();
     int fieldSizeBits = field->getElementSizeInBits();
     bool isLongRandoms;
@@ -1833,19 +1836,56 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
         cout << "size is" << size << "for party : " << m_partyId;
     }
 
-
+    auto t1 = high_resolution_clock::now();
     PrgFromOpenSSLAES prg((numOfRandomElements*size/16) + 1);
     SecretKey sk(aesKey, "aes");
     prg.setKey(sk);
 
-    for(int i=0; i<numOfRandomElements; i++){
 
-      if(isLongRandoms)
-          randomElementsToFill[i] = field->GetElement(((unsigned long)prg.getRandom64())>>(64 - fieldSizeBits));
-      else
-          randomElementsToFill[i] = field->GetElement(prg.getRandom32());
+    //vector<byte> randBytes(numOfRandomElements * size);
+    //prg.getPRGBytes(randBytes, 0, numOfRandomElements * size);
+
+    //auto randBytes = prg.getPRGBytesEX(numOfRandomElements * size);
+
+    byte *randBytes;
+    prg.getPRGBytes(randBytes, numOfRandomElements * size);
+    auto t2 = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(t2-t1).count();
+    if(flag_print_timings) {
+        cout << "time in milliseconds for getting random bytes: " << duration << endl;
     }
 
+    unsigned long *randBytesLong = (unsigned long *)randBytes;
+
+    for(int i=0; i<numOfRandomElements; i++){
+        randBytes[8*i+7] = randBytes[8*i+7]>>(64 - fieldSizeBits);
+    }
+
+    t1 = high_resolution_clock::now();
+
+    if(isLongRandoms) {
+        memcpy(randomElementsToFill.data() , randBytesLong, numOfRandomElements * size);
+
+//        for (int i = 0; i < numOfRandomElements; i++) {
+//
+//
+//            randomElementsToFill[i] = field->bytesToElement(randBytes + (i*fieldSize));
+//            //randomElementsToFill[i] = field->GetElement(randBytesLong[i]);
+//            //randomElementsToFill[i] = field->GetElement( (((unsigned long *)randBytes)[i])>>(64 - fieldSizeBits));
+//            //randomElementsToFill[i] = field->GetElement( (((*(unsigned long))randBytes.data())[i])>>(64 - fieldSizeBits) );
+//        }
+    }
+      else{
+        for (int i = 0; i < numOfRandomElements; i++) {
+            randomElementsToFill[i] = field->GetElement(prg.getRandom32());
+        }
+    }
+
+    t2 = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(t2-t1).count();
+    if(flag_print_timings) {
+        cout << "time in milliseconds for setting to elements: " << duration << endl;
+    }
 }
 
 

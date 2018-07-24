@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.cpp">
+			<Option target="MPCHonestMajorityNoTriplesYehuda"/>
+		</Unit>
+		<Unit filename="/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.h">
+			<Option target="MPCHonestMajorityNoTriplesYehuda"/>
+		</Unit>
 		<Unit filename="/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/HashAbstract.h">
 			<Option target="MPCHonestMajorityNoTriplesYehuda"/>
 		</Unit>

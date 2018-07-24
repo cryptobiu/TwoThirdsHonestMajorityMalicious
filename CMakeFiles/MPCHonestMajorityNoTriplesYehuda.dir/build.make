@@ -153,9 +153,33 @@ CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o.provide
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o.provides.build: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o
 
 
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o: GF2_8LookupTable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o -c /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.cpp
+
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.cpp > CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.i
+
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/GF2_8LookupTable.cpp -o CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.s
+
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.requires:
+
+.PHONY : CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.requires
+
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.provides: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.requires
+	$(MAKE) -f CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.provides.build
+.PHONY : CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.provides
+
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.provides.build: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o
+
+
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o: HashEncrypt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o -c /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/HashEncrypt.cpp
 
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o.provides.build
 
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o: TemplateField.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o -c /home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/TemplateField.cpp
 
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.i: cmake_force
@@ -207,6 +231,7 @@ MPCHonestMajorityNoTriplesYehuda_OBJECTS = \
 "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" \
 "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" \
 "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" \
+"CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o" \
 "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" \
 "CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o"
 
@@ -217,12 +242,13 @@ MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.di
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o
+MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/build.make
 MPCHonestMajorityNoTriplesYehuda: /home/meital/libscapi/libscapi.a
 MPCHonestMajorityNoTriplesYehuda: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MPCHonestMajorityNoTriplesYehuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/meital/ClionProjects/MPCHonestMajorityNoTriplesYehuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable MPCHonestMajorityNoTriplesYehuda"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -234,6 +260,7 @@ CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMa
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o.requires
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o.requires
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o.requires
+CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/GF2_8LookupTable.cpp.o.requires
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o.requires
 CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/requires: CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o.requires
 

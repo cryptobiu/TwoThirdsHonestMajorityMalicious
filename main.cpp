@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "ProtocolParty.h"
 #include "ZpKaratsubaElement.h"
+#include "GF2_8LookupTable.h"
 #include <smmintrin.h>
 #include <inttypes.h>
 #include <stdio.h>
@@ -76,6 +77,25 @@ int main(int argc, char* argv[])
         cout << "end main" << '\n';
 
     }
+    else if(fieldType.compare("GF2_8LookupTable") == 0)
+    {
+
+        cout<<"lookup table"<<endl;
+
+        ProtocolParty<GF2_8LookupTable> protocol(argc, argv);
+        auto t1 = high_resolution_clock::now();
+
+        protocol.run();
+
+        auto t2 = high_resolution_clock::now();
+
+        auto duration = duration_cast<milliseconds>(t2-t1).count();
+
+        cout << "time in milliseconds for " << times << " runs: " << duration << endl;
+
+        cout << "end main" << '\n';
+    }
+
 
     else if(fieldType.compare("ZpKaratsuba") == 0) {
         ProtocolParty<ZpKaratsubaElement> protocol(argc, argv);

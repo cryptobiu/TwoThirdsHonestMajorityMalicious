@@ -4,6 +4,7 @@
 
 #include "TemplateField.h"
 #include "ZpKaratsubaElement.h"
+#include "GF2_8LookupTable.h"
 
 
 using namespace NTL;
@@ -207,5 +208,61 @@ ZZ_p TemplateField<ZZ_p>::bytesToElement(unsigned char* elemenetInBytes){
 
     //convert the ZZ to ZZ_p
     return to_ZZ_p(zz);
+}
+
+
+
+template <>
+TemplateField<GF2_8LookupTable>::TemplateField(long fieldParam) {
+
+    elementSizeInBytes = 1;//round up to the next byte
+    elementSizeInBits = 8;
+
+    auto randomKey = prg.generateKey(128);
+    prg.setKey(randomKey);
+
+    m_ZERO = new GF2_8LookupTable(0);
+    m_ONE = new GF2_8LookupTable(1);
+
+    GF2_8LookupTable::initTable();
+}
+
+template <>
+void TemplateField<GF2_8LookupTable>::elementToBytes(unsigned char* elemenetInBytes, GF2_8LookupTable& element){
+
+    memcpy(elemenetInBytes, (byte*)(&element.elem), 1);
+}
+
+template <>
+GF2_8LookupTable TemplateField<GF2_8LookupTable>::bytesToElement(unsigned char* elemenetInBytes){
+
+    return GF2_8LookupTable((unsigned int)(*(byte*)elemenetInBytes));
+}
+
+
+template <>
+GF2_8LookupTable TemplateField<GF2_8LookupTable>::GetElement(long b) {
+
+
+    if(b == 1)
+    {
+        return *m_ONE;
+    }
+    if(b == 0)
+    {
+        return *m_ZERO;
+    }
+    else{
+        GF2_8LookupTable element((unsigned int)b);
+        return element;
+    }
+}
+
+
+template <>
+void TemplateField<GF2_8LookupTable>::elementVectorToByteVector(vector<GF2_8LookupTable> &elementVector, vector<byte> &byteVector){
+
+    copy_byte_array_to_byte_vector((byte *)elementVector.data(), elementVector.size()*elementSizeInBytes, byteVector,0);
+
 }
 
