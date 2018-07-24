@@ -12,6 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54133284-335d-4639-aaba-7e9d97043790" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MPCHonestMajorityNoTriplesYehuda" beforeDir="false" afterPath="$PROJECT_DIR$/MPCHonestMajorityNoTriplesYehuda" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtocolParty.h" beforeDir="false" afterPath="$PROJECT_DIR$/ProtocolParty.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -86,12 +90,21 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="1878" column="52" selection-start-line="1878" selection-start-column="52" selection-end-line="1878" selection-end-column="52" />
+            <state relative-caret-position="30480">
+              <caret line="1605" column="51" selection-start-line="1605" selection-start-column="42" selection-end-line="1605" selection-end-column="51" />
               <folding>
                 <element signature="e#51#70#0" expanded="true" />
                 <element signature="e#819#836#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GF2_8LookupTable.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GF2_8LookupTable.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -124,11 +137,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>randomOffset</find>
-      <find>delta</find>
       <find>preparation</find>
       <find>checkZero</find>
-      <find>processMultDN</find>
       <find>multGatesShares</find>
       <find>parser</find>
       <find>inputphase</find>
@@ -154,6 +164,9 @@
       <find>random</find>
       <find>stoi</find>
       <find>generatePseudoRandomElements</find>
+      <find>computationph</find>
+      <find>processMultiplications</find>
+      <find>processMultDN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -484,12 +497,12 @@
       <workItem from="1531109629988" duration="10580000" />
       <workItem from="1531814768539" duration="2489000" />
       <workItem from="1531817925788" duration="7658000" />
-      <workItem from="1531890057729" duration="34002000" />
+      <workItem from="1531890057729" duration="35428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243080000" />
+    <option name="totallyTimeSpent" value="244506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
@@ -564,13 +577,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TemplateField.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/libscapi/include/primitives/Matrix.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4237">
@@ -999,10 +1005,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GF2_8LookupTable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="1878" column="52" selection-start-line="1878" selection-start-column="52" selection-end-line="1878" selection-end-column="52" />
+        <state relative-caret-position="30480">
+          <caret line="1605" column="51" selection-start-line="1605" selection-start-column="42" selection-end-line="1605" selection-end-column="51" />
           <folding>
             <element signature="e#51#70#0" expanded="true" />
             <element signature="e#819#836#0" expanded="true" />

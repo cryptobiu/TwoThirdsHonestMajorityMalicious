@@ -1822,7 +1822,12 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
     int fieldSizeBits = field->getElementSizeInBits();
     bool isLongRandoms;
     int size;
-    if(fieldSize>4){
+
+    if(fieldSize==1){
+        size = 1;
+    }
+
+    else if(fieldSize>4){
       isLongRandoms = true;
       size = 8;
     }
@@ -1859,7 +1864,11 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
 
     t1 = high_resolution_clock::now();
 
-    if(isLongRandoms) {
+    if(fieldSize==1){
+        memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
+    }
+
+    else if(isLongRandoms) {
         for(int i=0; i<numOfRandomElements; i++){
             randBytes[8*i+7] = randBytes[8*i+7]>>(64 - fieldSizeBits);
         }
