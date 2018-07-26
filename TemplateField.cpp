@@ -248,12 +248,12 @@ GF2_8LookupTable TemplateField<GF2_8LookupTable>::GetElement(long b) {
     {
         return *m_ONE;
     }
-    if(b == 0)
+    else if(b == 0)
     {
         return *m_ZERO;
     }
     else{
-        GF2_8LookupTable element((unsigned int)b);
+        GF2_8LookupTable element((byte)b);
         return element;
     }
 }

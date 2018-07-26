@@ -27,7 +27,7 @@ public:
     static byte multTable[256][256];
     static void initTable();
     GF2_8LookupTable(){elem = 0;};
-    GF2_8LookupTable(unsigned int elem): elem(elem){};
+    GF2_8LookupTable(byte elem): elem(elem){};
 
     GF2_8LookupTable& operator=(const GF2_8LookupTable& other){elem = other.elem; return *this;};
     bool operator!=(const GF2_8LookupTable& other){ return !(other.elem == elem); };

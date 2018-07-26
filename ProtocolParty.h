@@ -51,7 +51,6 @@ private:
     TemplateField<FieldType> *field;
     vector<shared_ptr<ProtocolPartyData>>  parties;
     vector<FieldType> randomTAnd2TShares;
-    //vector<FieldType> randomSharesArray;
     vector<FieldType> secureRandomTShares;
     vector<FieldType> secureRandom2TShares;
     int randomOffset = 0;
@@ -59,7 +58,6 @@ private:
 
     ProtocolTimer* protocolTimer;
     int currentCirciutLayer = 0;
-    int randomSharesOffset = 0;
 
     string s;
     int numOfInputGates, numOfOutputGates;
@@ -91,15 +89,12 @@ private:
     vector<long> myInputs;
 
 public:
-//    ProtocolParty(int n, int id,string fieldType, string inputsFile, string outputFile, string circuitFile,
-//             int groupID = 0);
+
     ProtocolParty(int argc, char* argv[]);
 
 
     void roundFunctionSync(vector<vector<byte>> &sendBufs, vector<vector<byte>> &recBufs, int round);
     void exchangeData(vector<vector<byte>> &sendBufs,vector<vector<byte>> &recBufs, int first, int last);
-    void roundFunctionSyncBroadcast(vector<byte> &message, vector<vector<byte>> &recBufs);
-    void recData(vector<byte> &message, vector<vector<byte>> &recBufs, int first, int last);
 
      int counter = 0;
 
@@ -161,9 +156,6 @@ public:
      * Then, all the shares are sent to the relevant party
      */
     void inputPhase();
-    void generateRandomShares(int numOfRandoms, vector<FieldType> &randomElementsToFill);
-    void getRandomShares(int numOfRandoms, vector<FieldType> &randomElementsToFill);
-    void generateRandomSharesWithCheck(int numOfRnadoms, vector<FieldType>& randomElementsToFill);
     void generateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill);
     bool generateSecureDoubleSharings(int no_random);
 
@@ -224,10 +216,6 @@ public:
     void outputPhase();
 
     ~ProtocolParty();
-
-
-    void batchConsistencyCheckOfShares(const vector<FieldType> &inputShares);
-
 
 };
 
@@ -317,7 +305,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
     readMyInputs();
 
     auto t1 = high_resolution_clock::now();
-    initializationPhase(/*matrix_him, matrix_vand, m*/);
+    initializationPhase();
 
     auto t2 = high_resolution_clock::now();
 
@@ -577,129 +565,6 @@ void ProtocolParty<FieldType>::inputPhase()
     }
 
 }
-
-
-template <class FieldType>
-void ProtocolParty<FieldType>::generateRandomShares(int numOfRandoms, vector<FieldType> &randomElementsToFill) {
-    int index = 0;
-    vector<vector<byte>> recBufsBytes(N);
-    int robin = 0;
-    int no_random = numOfRandoms;
-
-    vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(
-            N);;
-
-    vector<vector<FieldType>> sendBufsElements(N);
-    vector<vector<byte>> sendBufsBytes(N);
-
-    // the number of buckets (each bucket requires one double-sharing
-    // from each party and gives N-2T random double-sharings)
-    int no_buckets = (no_random / (N - T)) + 1;
-
-    //sharingBufTElements.resize(no_buckets*(N-2*T)); // my shares of the double-sharings
-    //sharingBuf2TElements.resize(no_buckets*(N-2*T)); // my shares of the double-sharings
-
-    //maybe add some elements if a partial bucket is needed
-    randomElementsToFill.resize(no_buckets*(N - T));
-
-
-    for(int i=0; i < N; i++)
-    {
-        sendBufsElements[i].resize(no_buckets);
-        sendBufsBytes[i].resize(no_buckets * field->getElementSizeInBytes());
-        recBufsBytes[i].resize(no_buckets * field->getElementSizeInBytes());
-    }
-
-    /**
-     *  generate random sharings.
-     *  first degree t.
-     *
-     */
-    for(int k=0; k < no_buckets; k++)
-    {
-        // generate random degree-T polynomial
-        for(int i = 0; i < T + 1; i++)
-        {
-            // A random field element, uniform distribution, note that x1[0] is the secret which is also random
-            x1[i] = field->Random();
-
-        }
-
-        matrix_vand.MatrixMult(x1, y1, T + 1); // eval poly at alpha-positions
-
-        // prepare shares to be sent
-        for(int i=0; i < N; i++)
-        {
-            //cout << "y1[ " <<i<< "]" <<y1[i] << endl;
-            sendBufsElements[i][k] = y1[i];
-
-        }
-    }
-
-    if(flag_print) {
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < sendBufsElements[0].size(); k++) {
-
-                // cout << "before roundfunction4 send to " <<i <<" element: "<< k << " " << sendBufsElements[i][k] << endl;
-            }
-        }
-        cout << "sendBufs" << endl;
-        cout << "N" << N << endl;
-        cout << "T" << T << endl;
-    }
-
-    int fieldByteSize = field->getElementSizeInBytes();
-    for(int i=0; i < N; i++)
-    {
-//        for(int j=0; j<sendBufsElements[i].size();j++) {
-//            field->elementToBytes(sendBufsBytes[i].data() + (j * fieldByteSize), sendBufsElements[i][j]);
-//        }
-
-        field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
-    }
-
-    roundFunctionSync(sendBufsBytes, recBufsBytes, 4);
-
-
-    if(flag_print) {
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < sendBufsBytes[0].size(); k++) {
-
-                cout << "roundfunction4 send to " <<i <<" element: "<< k << " " << (int)sendBufsBytes[i][k] << endl;
-            }
-        }
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < recBufsBytes[0].size(); k++) {
-                cout << "roundfunction4 receive from " <<i <<" element: "<< k << " " << (int) recBufsBytes[i][k] << endl;
-            }
-        }
-    }
-
-    for(int k=0; k < no_buckets; k++) {
-        for (int i = 0; i < N; i++) {
-            t1[i] = field->bytesToElement(recBufsBytes[i].data() + (k * fieldByteSize));
-
-        }
-        matrix_vand_transpose.MatrixMult(t1, r1, N - T);
-
-        //copy the resulting vector to the array of randoms
-        for (int i = 0; i < N - T; i++) {
-
-            randomElementsToFill[index] = r1[i];
-            index++;
-
-        }
-    }
-}
-//template <class FieldType>
-//void ProtocolParty<FieldType>::getRandomShares(int numOfRandoms, vector<FieldType> &randomElementsToFill){
-//
-//    randomElementsToFill.assign (randomSharesArray.begin() + randomSharesOffset,
-//                                 randomSharesArray.begin() + randomSharesOffset + numOfRandoms);
-//
-//    randomSharesOffset += numOfRandoms;
-//
-//}
 
 
 template <class FieldType>
@@ -1181,14 +1046,7 @@ bool ProtocolParty<FieldType>::preparationPhase()
     int delta =   (5 + field->getElementSizeInBytes() - 1) / field->getElementSizeInBytes();
     int keysize = 16/field->getElementSizeInBytes() + 1;
 
-    int numOfRandomShares = keysize;
-    //randomSharesArray.resize(numOfRandomShares);
-
-    randomSharesOffset = 0;
-
     randomOffset = 0;
-    //generate enough random shares for the AES key
-    //generateRandomShares(numOfRandomShares, randomSharesArray);
 
     if(isHonest==false)
         generateSecureDoubleSharings(3*delta + keysize);
@@ -1744,10 +1602,6 @@ bool ProtocolParty<FieldType>::checkZero(int numOfChecks, vector<FieldType> &toC
       vector<byte> aesKey(numOfRandomShares*fieldByteSize);
 
 
-      //generate enough random shares for the AES key
-
-      //getRandomShares(numOfRandomShares, randomSharesArray);
-
       //get the secure random shares
       vector<FieldType> secRandShares(secureRandomTShares.begin() + randomOffset,secureRandomTShares.begin() + randomOffset + numOfRandomShares);
       randomOffset+=numOfRandomShares;
@@ -1857,11 +1711,6 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
     prg.setKey(sk);
 
 
-    //vector<byte> randBytes(numOfRandomElements * size);
-    //prg.getPRGBytes(randBytes, 0, numOfRandomElements * size);
-
-    //auto randBytes = prg.getPRGBytesEX(numOfRandomElements * size);
-
     byte *randBytes;
     prg.getPRGBytes(randBytes, numOfRandomElements * size);
     auto t2 = high_resolution_clock::now();
@@ -1875,28 +1724,29 @@ void ProtocolParty<FieldType>::generatePseudoRandomElements(vector<byte> & aesKe
     t1 = high_resolution_clock::now();
 
     if(fieldSize==1){
+        //GF2_8, just copy the bytes to the elements array
         memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
     }
 
     else if(isLongRandoms) {
+        //mersenne61 shift left before copying in order the make the bytes fit the field (there is
+        // one exception where the bytes might ad up to be p, but since we mult and adjust, the result will
+        // be back in the field
         for(int i=0; i<numOfRandomElements; i++){
             randBytes[8*i+7] = randBytes[8*i+7]>>(64 - fieldSizeBits);
         }
+        //copy to the element array after ajdustment
         memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
 
-//        for (int i = 0; i < numOfRandomElements; i++) {
-//
-//
-//            randomElementsToFill[i] = field->bytesToElement(randBytes + (i*fieldSize));
-//            //randomElementsToFill[i] = field->GetElement(randBytesLong[i]);
-//            //randomElementsToFill[i] = field->GetElement( (((unsigned long *)randBytes)[i])>>(64 - fieldSizeBits));
-//            //randomElementsToFill[i] = field->GetElement( (((*(unsigned long))randBytes.data())[i])>>(64 - fieldSizeBits) );
-//        }
     }
       else{
+        //mersenne31 shift left before copying in order the make the bytes fit the field (there is
+        // one exception where the bytes might ad up to be p, but since we mult and adjust, the result will
+        // be back in the field
         for(int i=0; i<numOfRandomElements; i++){
             randBytes[4*i+3] = randBytes[4*i+3]>>(32 - fieldSizeBits);
         }
+        //copy to the element array after ajdustment
         memcpy(randomElementsToFill.data() , randBytes, numOfRandomElements * size);
     }
 
@@ -2064,84 +1914,6 @@ void ProtocolParty<FieldType>::exchangeData(vector<vector<byte>> &sendBufs, vect
 }
 
 
-
-
-
-template <class FieldType>
-void ProtocolParty<FieldType>::roundFunctionSyncBroadcast(vector<byte> &message, vector<vector<byte>> &recBufs) {
-
-    //cout<<"in roundFunctionSyncBroadcast "<< endl;
-
-    int numThreads = 10;//parties.size();
-    int numPartiesForEachThread;
-
-    if (parties.size() <= numThreads){
-        numThreads = parties.size();
-        numPartiesForEachThread = 1;
-    } else{
-        numPartiesForEachThread = (parties.size() + numThreads - 1)/ numThreads;
-    }
-
-
-    recBufs[m_partyId] = message;
-    //recieve the data using threads
-    vector<thread> threads(numThreads);
-    for (int t=0; t<numThreads; t++) {
-        if ((t + 1) * numPartiesForEachThread <= parties.size()) {
-            threads[t] = thread(&ProtocolParty::recData, this, ref(message), ref(recBufs),
-                                t * numPartiesForEachThread, (t + 1) * numPartiesForEachThread);
-        } else {
-            threads[t] = thread(&ProtocolParty::recData, this, ref(message),  ref(recBufs), t * numPartiesForEachThread, parties.size());
-        }
-    }
-    for (int t=0; t<numThreads; t++){
-        threads[t].join();
-    }
-
-}
-
-
-template <class FieldType>
-void ProtocolParty<FieldType>::recData(vector<byte> &message, vector<vector<byte>> &recBufs, int first, int last){
-
-
-    //cout<<"in exchangeData";
-    for (int i=first; i < last; i++) {
-
-        if ((m_partyId) < parties[i]->getID()) {
-
-
-            //send shares to my input bits
-            parties[i]->getChannel()->write(message.data(), message.size());
-            //cout<<"write the data:: my Id = " << m_partyId - 1<< "other ID = "<< parties[i]->getID() <<endl;
-
-
-            //receive shares from the other party and set them in the shares array
-            parties[i]->getChannel()->read(recBufs[parties[i]->getID()].data(), recBufs[parties[i]->getID()].size());
-            //cout<<"read the data:: my Id = " << m_partyId-1<< "other ID = "<< parties[i]->getID()<<endl;
-
-        } else{
-
-
-            //receive shares from the other party and set them in the shares array
-            parties[i]->getChannel()->read(recBufs[parties[i]->getID()].data(), recBufs[parties[i]->getID()].size());
-            //cout<<"read the data:: my Id = " << m_partyId-1<< "other ID = "<< parties[i]->getID()<<endl;
-
-
-
-            //send shares to my input bits
-            parties[i]->getChannel()->write(message.data(), message.size());
-            //cout<<"write the data:: my Id = " << m_partyId-1<< "other ID = "<< parties[i]->getID() <<endl;
-
-
-        }
-
-    }
-
-
-}
-
-
 template <class FieldType>
 ProtocolParty<FieldType>::~ProtocolParty()
 {
@@ -2149,7 +1921,6 @@ ProtocolParty<FieldType>::~ProtocolParty()
     delete protocolTimer;
     delete field;
     delete timer;
-    //delete comm;
 }
 
 
