@@ -68,6 +68,8 @@ private:
     HIM<FieldType> matrix_for_2t;
     vector<FieldType> y_for_interpolate;
 
+    vector<HIM<FieldType>> matrices_for_interpolate;
+
 
     HIM<FieldType> matrix_him;
 
@@ -193,6 +195,8 @@ public:
      * The first (and only) element of the output vector is the secret.
      */
     FieldType interpolate(vector<FieldType>& x);
+
+    FieldType interpolateForParty(vector<FieldType>& x, int partyID);
 
 
     /**
@@ -970,7 +974,7 @@ void ProtocolParty<FieldType>::initializationPhase()
     vector<FieldType> alpha2(T);
 
     beta[0] = field->GetElement(0); // zero of the field
-    matrix_for_interpolate.allocate(1,N, field);
+
 
 
     matrix_him.allocate(N,N,field);
@@ -1002,7 +1006,7 @@ void ProtocolParty<FieldType>::initializationPhase()
 
     m.InitHIMByVectors(alpha1, alpha2);
 
-    matrix_for_interpolate.InitHIMByVectors(alpha, beta);
+
 
     vector<FieldType> alpha_until_t(T + 1);
     vector<FieldType> alpha_from_t(N - 1 - T);
@@ -1037,6 +1041,38 @@ void ProtocolParty<FieldType>::initializationPhase()
     wSharesForVerification.resize(circuit.getNrOfInputGates());
     multGatesSharesForVerification.resize(circuit.getNrOfMultiplicationGates()*2);
 
+
+
+
+    vector<FieldType> currAlpha(2*T+1);
+
+
+
+    matrices_for_interpolate.resize(N);
+    int counter = 0;
+
+    for(int i=0; i<N; i++){
+
+        for(int j=0; j<N; j++) {
+
+            if((j-i<=2*T && j-i>=0) || ((N+j) - i)<=2*T){
+
+
+                currAlpha[counter] = alpha[j];
+                counter++;
+
+            }
+        }
+        matrices_for_interpolate[i].allocate(1,2*T+1, field);
+        matrices_for_interpolate[i].InitHIMByVectors(currAlpha, beta);
+
+        counter= 0;
+    }
+
+
+    alpha.resize(2*T+1);
+    matrix_for_interpolate.allocate(1,2*T+1, field);
+    matrix_for_interpolate.InitHIMByVectors(alpha, beta);
 
 }
 
@@ -1149,6 +1185,14 @@ FieldType ProtocolParty<FieldType>::interpolate(vector<FieldType>& x)
 }
 
 
+template <class FieldType>
+FieldType ProtocolParty<FieldType>::interpolateForParty(vector<FieldType>& x, int partyID)
+{
+    //vector<FieldType> y(N); // result of interpolate
+    matrices_for_interpolate[partyID].MatrixMult(x, y_for_interpolate);
+    return y_for_interpolate[0];
+}
+
 
 template <class FieldType>
 FieldType ProtocolParty<FieldType>::reconstructShare(vector<FieldType>& x, int d){
@@ -1243,7 +1287,6 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
 
 
-
     //generate the shares for x+a and y+b. do it in the same array to send once
     for (int k = circuit.getLayers()[currentCirciutLayer];
          k < circuit.getLayers()[currentCirciutLayer + 1]; k++)//go over only the logit gates
@@ -1278,17 +1321,25 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
         if(i<indexForDecreasingSize)
             currentNumOfElements++;
 
-        //fill the send buf according to the number of elements to send to each party
-        sendBufsElements[i].resize(currentNumOfElements);
-        sendBufsBytes[i].resize(currentNumOfElements*fieldByteSize);
-        for(int j=0; j<currentNumOfElements; j++) {
+        //should send
+        if((m_partyId-i<=2*T && m_partyId-i>=0) || ((N+m_partyId) - i)<=2*T){
 
-            sendBufsElements[i][j] = xyMinusRShares[counter];
-            counter++;
 
+            //fill the send buf according to the number of elements to send to each party
+            sendBufsElements[i].resize(currentNumOfElements);
+            sendBufsBytes[i].resize(currentNumOfElements*fieldByteSize);
+            for(int j=0; j<currentNumOfElements; j++) {
+
+                sendBufsElements[i][j] = xyMinusRShares[counter];
+                counter++;
+
+            }
+            field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
         }
-        field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
-
+        else{
+            sendBufsBytes[i].resize(0);
+            counter+=currentNumOfElements;//temp should not even create the elements
+        }
     }
 
     //resize the recbuf array.
@@ -1298,7 +1349,13 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
     }
     for(int i=0;i<N;i++){
 
-        recBufsBytes[i].resize(myNumOfElementsToExpect*fieldByteSize);
+        if((i-m_partyId<=2*T && i-m_partyId>=0) || ((N+i) - m_partyId)<=2*T){
+            recBufsBytes[i].resize(myNumOfElementsToExpect * fieldByteSize);
+        }
+        else{
+            recBufsBytes[i].resize(0);
+        }
+
     }
 
 
@@ -1310,17 +1367,23 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
     xyMinusRBytes.resize(myNumOfElementsToExpect*fieldByteSize);
 
     //reconstruct the shares that I am responsible of recieved from the other parties
-    vector<FieldType> xyMinurAllShares(N);
+    vector<FieldType> xyMinurAllShares(2*T+1);
+    counter = 0;
 
     for (int k = 0;k < myNumOfElementsToExpect; k++)//go over only the logit gates
     {
         for (int i = 0; i < N; i++) {
 
-            xyMinurAllShares[i] = field->bytesToElement(recBufsBytes[i].data() + (k * fieldByteSize));
+            if((i-m_partyId<=2*T && i-m_partyId>=0) || ((N+i) - m_partyId)<=2*T) {
+
+                xyMinurAllShares[counter] = field->bytesToElement(recBufsBytes[i].data() + (k * fieldByteSize));
+                counter++;
+            }
+
         }
 
-        // reconstruct the shares by P0
-        xyMinusR[k] = interpolate(xyMinurAllShares);
+        xyMinusR[k] = interpolateForParty(xyMinurAllShares, m_partyId);
+        counter = 0;
 
     }
 
