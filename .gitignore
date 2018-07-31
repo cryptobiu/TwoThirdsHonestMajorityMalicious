@@ -2,7 +2,7 @@
 *.csv
 CMakeFiles/
 CMakeCache.txt
-cmake-build-debug
+cmake-build-debug/
 cmake_install.cmake
 Makefile
 MPCHonestMajorityNoTriplesYehuda*
