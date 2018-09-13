@@ -55,6 +55,10 @@ private:
     vector<FieldType> secureRandom2TShares;
     int randomOffset = 0;
 
+    PrgFromOpenSSLAES prg;
+
+    vector<PrgFromOpenSSLAES> myPrgs;
+    vector<PrgFromOpenSSLAES> fromOthersPrgs;
 
     ProtocolTimer* protocolTimer;
     int currentCirciutLayer = 0;
@@ -64,6 +68,8 @@ private:
     string inputsFile, outputFile;
     vector<FieldType> beta;
     HIM<FieldType> matrix_for_interpolate;
+    HIM<FieldType> matrix_for_interpolate_for_t_random_shares;
+    HIM<FieldType> matrix_for_interpolate_for_2t_random_shares;
     HIM<FieldType> matrix_for_t;
     HIM<FieldType> matrix_for_2t;
     vector<FieldType> y_for_interpolate;
@@ -145,6 +151,8 @@ public:
      */
     void initializationPhase();
 
+    void initMatricesForRandomSharesAndKeys();
+
 
     bool preparationPhase();
 
@@ -159,6 +167,7 @@ public:
      */
     void inputPhase();
     void generateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill);
+    void alternativeGenerateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill);
     bool generateSecureDoubleSharings(int no_random);
 
 
@@ -318,6 +327,8 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
         cout << "time in milliseconds initializationPhase: " << duration << endl;
     }
 }
+
+
 
 
 template <class FieldType>
@@ -567,7 +578,7 @@ void ProtocolParty<FieldType>::inputPhase()
 
         }
     }
-
+    
 }
 
 
@@ -955,6 +966,204 @@ void ProtocolParty<FieldType>::generateRandom2TAndTShares(int numOfRandomPairs, 
 
 }
 
+
+template <class FieldType>
+void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill){
+
+
+
+
+    int index = 0;
+    vector<vector<byte>> recBufsBytes(N);
+    int robin = 0;
+    int no_random = numOfRandomPairs;
+
+    vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(N);
+
+    vector<vector<FieldType>> sendBufsElements(N);
+    vector<vector<byte>> sendBufsBytes(N);
+
+    // the number of buckets (each bucket requires one double-sharing
+    // from each party and gives N-2T random double-sharings)
+    int no_buckets = (no_random / (N-T))+1;
+
+    //sharingBufTElements.resize(no_buckets*(N-2*T)); // my shares of the double-sharings
+    //sharingBuf2TElements.resize(no_buckets*(N-2*T)); // my shares of the double-sharings
+
+    //maybe add some elements if a partial bucket is needed
+    randomElementsToFill.resize(no_buckets*(N-T)*2);
+
+
+
+    //generate the shares for the t parties that have keys
+
+    int counter = 1;
+    int counter2T = 1;
+
+    vector<FieldType> forInterpolate(T+1);
+    vector<FieldType> forInterpolate2T(2*T+1);
+    vector<FieldType> calcShares(N-T);
+
+
+    for(int k=0; k < no_buckets; k++) {
+
+        //choose the share for 0 - the secret
+        forInterpolate[0] = field->bytesToElement(myPrgs[m_partyId].getPRGBytesEX(field->getElementSizeInBytes()));
+        for (int i = 0; i < N; i++) {
+
+            //should send seed for T also
+            if ((m_partyId - i <= T && m_partyId - i > 0) || ((N + m_partyId) - i) <= T) {
+
+                //set the shares from the prg as set by the t parties that have the prg that I had sent them
+                forInterpolate[counter] = y1[i] =
+                        field->bytesToElement(myPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
+
+                counter++;
+            }
+            //should send seed for T also
+            if ((m_partyId - i <= T && m_partyId - i > 0) || ((N + m_partyId) - i) <= T) {
+
+                //set the shares from the prg as set by the t parties that have the prg that I had sent them
+                forInterpolate[counter2T] =  y2[i] = field->bytesToElement(myPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
+
+                counter2T++;
+
+            }
+
+
+        }
+
+        //generate the shares for all other parties
+        matrix_for_interpolate_for_t_random_shares.MatrixMult(forInterpolate, calcShares);
+
+
+        counter = 0;
+        for (int i = 0; i < N; i++) {
+
+            //should send seed for T also
+            if (!((m_partyId - i <= T && m_partyId - i > 0) || ((N + m_partyId) - i) <= T)) {
+
+                y1[i] = calcShares[counter];
+
+                sendBufsElements[i][k] = y1[i];
+                counter++;
+            }
+
+
+        }
+        counter = 0;
+
+        matrix_for_interpolate_for_2t_random_shares.MatrixMult(forInterpolate2T, calcShares);
+    }
+
+
+    for(int i=0; i < N; i++)
+    {
+        sendBufsElements[i].resize(no_buckets*2);
+        sendBufsBytes[i].resize(no_buckets*field->getElementSizeInBytes()*2);
+        recBufsBytes[i].resize(no_buckets*field->getElementSizeInBytes()*2);
+    }
+
+    /**
+     *  generate random sharings.
+     *  first degree t.
+     *
+     */
+    for(int k=0; k < no_buckets; k++)
+    {
+        // generate random degree-T polynomial
+        for(int i = 0; i < T+1; i++)
+        {
+            // A random field element, uniform distribution, note that x1[0] is the secret which is also random
+            x1[i] = field->Random();
+
+        }
+
+        matrix_vand.MatrixMult(x1, y1,T+1); // eval poly at alpha-positions
+
+        x2[0] = x1[0];
+        // generate random degree-T polynomial
+        for(int i = 1; i < 2*T+1; i++)
+        {
+            // A random field element, uniform distribution, note that x1[0] is the secret which is also random
+            x2[i] = field->Random();
+
+        }
+
+        matrix_vand.MatrixMult(x2, y2,2*T+1);
+
+        // prepare shares to be sent
+        for(int i=0; i < N; i++)
+        {
+            //cout << "y1[ " <<i<< "]" <<y1[i] << endl;
+            sendBufsElements[i][2*k] = y1[i];
+            sendBufsElements[i][2*k + 1] = y2[i];
+
+        }
+    }
+
+    if(flag_print) {
+        for (int i = 0; i < N; i++) {
+            for (int k = 0; k < sendBufsElements[0].size(); k++) {
+
+                // cout << "before roundfunction4 send to " <<i <<" element: "<< k << " " << sendBufsElements[i][k] << endl;
+            }
+        }
+        cout << "sendBufs" << endl;
+        cout << "N" << N << endl;
+        cout << "T" << T << endl;
+    }
+
+    int fieldByteSize = field->getElementSizeInBytes();
+    for(int i=0; i < N; i++)
+    {
+//        for(int j=0; j<sendBufsElements[i].size();j++) {
+//            field->elementToBytes(sendBufsBytes[i].data() + (j * fieldByteSize), sendBufsElements[i][j]);
+//        }
+
+        field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
+    }
+
+    roundFunctionSync(sendBufsBytes, recBufsBytes,4);
+
+
+    if(flag_print) {
+        for (int i = 0; i < N; i++) {
+            for (int k = 0; k < sendBufsBytes[0].size(); k++) {
+
+                cout << "roundfunction4 send to " <<i <<" element: "<< k << " " << (int)sendBufsBytes[i][k] << endl;
+            }
+        }
+        for (int i = 0; i < N; i++) {
+            for (int k = 0; k < recBufsBytes[0].size(); k++) {
+                cout << "roundfunction4 receive from " <<i <<" element: "<< k << " " << (int) recBufsBytes[i][k] << endl;
+            }
+        }
+    }
+
+    for(int k=0; k < no_buckets; k++) {
+        for (int i = 0; i < N; i++) {
+            t1[i] = field->bytesToElement(recBufsBytes[i].data() + (2*k * fieldByteSize));
+            t2[i] = field->bytesToElement(recBufsBytes[i].data() + ((2*k +1) * fieldByteSize));
+
+        }
+        matrix_vand_transpose.MatrixMult(t1, r1,N-T);
+        matrix_vand_transpose.MatrixMult(t2, r2,N-T);
+
+        //copy the resulting vector to the array of randoms
+        for (int i = 0; i < (N - T); i++) {
+
+            randomElementsToFill[index*2] = r1[i];
+            randomElementsToFill[index*2 +1] = r2[i];
+            index++;
+
+        }
+    }
+
+}
+
+
+
 /**
  * some global variables are initialized
  * @param GateValueArr
@@ -976,6 +1185,8 @@ void ProtocolParty<FieldType>::initializationPhase()
     beta[0] = field->GetElement(0); // zero of the field
 
 
+    myPrgs.resize(N);
+    fromOthersPrgs.resize(N);
 
     matrix_him.allocate(N,N,field);
     matrix_vand.allocate(N,N,field);
@@ -1073,6 +1284,122 @@ void ProtocolParty<FieldType>::initializationPhase()
     alpha.resize(2*T+1);
     matrix_for_interpolate.allocate(1,2*T+1, field);
     matrix_for_interpolate.InitHIMByVectors(alpha, beta);
+
+}
+
+template <class FieldType>
+void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
+
+
+
+    auto randomKey = prg.generateKey(128);
+    prg.setKey(randomKey);
+    int sizeOfSeed = 16;
+    vector<vector<byte>> sendBufsBytes(N);
+    vector<vector<byte>> recBufsBytes(N);
+
+    vector<FieldType> currAlphaForT(T+1);
+    vector<FieldType> currAlphaFor2T(2*T+1);
+
+    vector<FieldType> currBetaForT(N-T);
+    vector<FieldType> currBetaFor2T(N-2*T);
+
+
+    int counterAlphaForT = 1;
+    int counterAlphaFor2T = 1;
+    int counterBetaForT = 0;
+    int counterBetaFor2T = 0;
+
+    currAlphaForT[0] = *field->GetZero();
+    currAlphaFor2T[0] = *field->GetZero();
+
+
+    for(int i=0; i<N; i++){
+
+
+        //sent seed for 2T shares
+        if((m_partyId-i<=2*T && m_partyId-i>0) || ((N+m_partyId) - i)<=2*T){
+
+
+            //fill the send buf with seed to 2T other parties and me
+            sendBufsBytes[i].resize(sizeOfSeed);
+            prg.getPRGBytes(sendBufsBytes[i], 0, sizeOfSeed);
+
+            SecretKey key(sendBufsBytes[i], "aes");
+            myPrgs[i].setKey(key);
+
+
+            currAlphaFor2T[counterAlphaFor2T] = alpha[i];
+
+            counterAlphaFor2T++;
+        }
+        else{
+            sendBufsBytes[i].resize(0);
+
+            currBetaFor2T[counterBetaFor2T] = alpha[i];
+
+            counterBetaFor2T++;
+        }
+
+        //should send seed for T also
+        if((m_partyId-i<=T && m_partyId-i>0) || ((N+m_partyId) - i)<=T){
+
+
+            //set the alpha values according to the parties that hold the t-degree key
+            currAlphaForT[counterAlphaForT] = alpha[i];
+
+            counterAlphaForT++;
+        }
+        else{
+
+            //set relevant alpha
+
+            //create beta for every point we will need to interpolate, this is for every party that does not
+            //generate the point using the t-degree key
+            currBetaForT[counterBetaForT] = alpha[i];
+
+            counterBetaForT++;
+
+
+        }
+    }
+
+    for(int i=0;i<N;i++){
+
+        if((i-m_partyId<=2*T && i-m_partyId>=0) || ((N+i) - m_partyId)<=2*T){
+            recBufsBytes[i].resize(sizeOfSeed);
+        }
+
+        else{
+            recBufsBytes[i].resize(0);
+        }
+
+    }
+
+    roundFunctionSync(sendBufsBytes , recBufsBytes,23);
+
+    //set the prg that I get from other parties
+    for(int i=0; i<N; i++){
+
+        if((i-m_partyId<=2*T && i-m_partyId>=0) || ((N+i) - m_partyId)<=2*T){
+
+            SecretKey key(recBufsBytes[i], "aes");
+            fromOthersPrgs[i].setKey(key);
+
+        }
+    }
+
+    //finally create the matrix for the intrpolation of N-T-1 points. Every row in the
+    //matrix will generate a N-T-1 shares for the parties that do not have the prg
+    //to generate a random share by itself
+    matrix_for_interpolate_for_t_random_shares.allocate(T+1,N-T, field);
+    matrix_for_interpolate_for_t_random_shares.InitHIMByVectors(currAlphaForT, currBetaForT);
+
+    matrix_for_interpolate_for_2t_random_shares.allocate(2*T+1,1, field);
+    matrix_for_interpolate_for_2t_random_shares.InitHIMByVectors(currAlphaFor2T, currBetaFor2T);
+
+
+
 
 }
 
