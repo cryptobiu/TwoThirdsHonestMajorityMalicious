@@ -14,15 +14,15 @@
     <list default="true" id="54133284-335d-4639-aaba-7e9d97043790" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtocolParty.h" beforeDir="false" afterPath="$PROJECT_DIR$/ProtocolParty.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_protocol.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_protocol.sh" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -69,11 +69,20 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="1194" column="41" selection-start-line="1194" selection-start-column="41" selection-end-line="1194" selection-end-column="41" />
+            <state relative-caret-position="180">
+              <caret line="1243" column="23" selection-start-line="1243" selection-start-column="23" selection-end-line="1243" selection-end-column="23" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="throw_exception.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/libscapi/install/include/boost/throw_exception.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -90,17 +99,8 @@
       <file leaf-file-name="Prg.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/libscapi/src/primitives/Prg.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5940">
-              <caret line="297" selection-start-line="297" selection-end-line="297" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GF2_8LookupTable.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GF2_8LookupTable.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            <state relative-caret-position="178">
+              <caret line="296" selection-start-line="296" selection-end-line="296" />
             </state>
           </provider>
         </entry>
@@ -122,7 +122,7 @@
       <file leaf-file-name="Mersenne.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/libscapi/src/primitives/Mersenne.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3020">
+            <state relative-caret-position="235">
               <caret line="151" selection-start-line="151" selection-end-line="151" />
             </state>
           </provider>
@@ -131,8 +131,8 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="240">
+              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -141,18 +141,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>matrices_for_interpolate</find>
-      <find>generateRandom2TAndTShares</find>
-      <find>prg</find>
-      <find>initMatricesForRandomSharesAndKeys</find>
-      <find>fromOthersPrgs</find>
-      <find>currBetaFor2T</find>
-      <find>matrix_for_interpolate_for_2t_random_shares</find>
-      <find>alternativeGenerateRandom2TAndTShares</find>
       <find>currAlpha</find>
       <find>InitHIMByVectors</find>
       <find>currBetaForT</find>
-      <find>myprg</find>
       <find>counter</find>
       <find>recBufsBytes</find>
       <find>m_partyId</find>
@@ -161,16 +152,25 @@
       <find>preparing a</find>
       <find>verificationPhase</find>
       <find>computat</find>
-      <find>myPrgs</find>
       <find>||</find>
       <find>(!</find>
       <find>cheating!!!</find>
       <find>matrix_vand_transpose</find>
       <find>currAlphaForT</find>
       <find>matrix_for_interpolate_for_t_random_shares</find>
-      <find>forInterpolate2T</find>
       <find>2</find>
       <find>y2</find>
+      <find>fromOthersPrgs</find>
+      <find>myprg</find>
+      <find>forInterpolate2T</find>
+      <find>init</find>
+      <find>initializationPhase</find>
+      <find>alternativeGenerateRandom2TAndTShares</find>
+      <find>(i-m_partyId&lt;=2*T</find>
+      <find>myPrgs</find>
+      <find>2T</find>
+      <find>Prgs</find>
+      <find>initMatricesForRandomSharesAndKeys</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,7 +245,7 @@
   <component name="RunManager" selected="Application.MPCHonestMajorityNoTriplesYehuda">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" RUN_TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" EXPLICIT_BUILD_TARGET_NAME="all" />
     <configuration name="MPCHonestMajorityNoTriples" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="partyID 2 -partiesNumber 3 -inputFile $PROJECT_DIR$/GenomeInputs.txt -outputFile output.txt -circuitFile  $PROJECT_DIR$/GenomeMPCFor1543109InputsAnd3Parties.txt -fieldType  ZpMersenne61 -partiesFile Parties.txt -internalIterationsNumber 5" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" TARGET_NAME="MPCHonestMajorityNoTriples" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" RUN_TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" />
-    <configuration name="MPCHonestMajorityNoTriplesYehuda" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="partyID 0 -partiesNumber 10 -inputFile $PROJECT_DIR$/inputs100.txt -outputFile output.txt -circuitFile  $PROJECT_DIR$/100000G_100000MG_100In_50Out_20D_OutputOne10P.txt -fieldType  ZpMersenne61 -partiesFile Parties.txt -internalIterationsNumber 1 -isHonest 0" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" RUN_TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" />
+    <configuration name="MPCHonestMajorityNoTriplesYehuda" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="partyID 0 -partiesNumber 10 -inputFile $PROJECT_DIR$/inputs100.txt -outputFile output.txt -circuitFile  $PROJECT_DIR$/100000G_100000MG_100In_50Out_20D_OutputOne10P.txt -fieldType  ZpMersenne61 -partiesFile Parties.txt -internalIterationsNumber 1 -isHonest 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MPCHonestMajorityNoTriplesYehuda" RUN_TARGET_NAME="MPCHonestMajorityNoTriplesYehuda" />
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="MPCHonestMajorityNoTriples" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -520,12 +520,12 @@
       <workItem from="1534930240535" duration="8000" />
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
-      <workItem from="1537098558692" duration="1277000" />
+      <workItem from="1537098558692" duration="13077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326245000" />
+    <option name="totallyTimeSpent" value="338045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
@@ -540,7 +540,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39300412" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31790122" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -563,7 +563,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1160</line>
+          <line>1163</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
@@ -952,13 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/libscapi/install/include/boost/throw_exception.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/libscapi/build/NTL/src/tools.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -999,31 +992,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/libscapi/src/primitives/Mersenne.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3020">
-          <caret line="151" selection-start-line="151" selection-end-line="151" />
+        <state relative-caret-position="240">
+          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/libscapi/install/include/boost/throw_exception.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/libscapi/src/primitives/Prg.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5940">
-          <caret line="297" selection-start-line="297" selection-end-line="297" />
+        <state relative-caret-position="178">
+          <caret line="296" selection-start-line="296" selection-end-line="296" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$USER_HOME$/libscapi/src/primitives/Mersenne.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="235">
+          <caret line="151" selection-start-line="151" selection-end-line="151" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="1194" column="41" selection-start-line="1194" selection-start-column="41" selection-end-line="1194" selection-end-column="41" />
+        <state relative-caret-position="180">
+          <caret line="1243" column="23" selection-start-line="1243" selection-start-column="23" selection-end-line="1243" selection-end-column="23" />
           <folding>
             <element signature="e#819#836#0" expanded="true" />
           </folding>
