@@ -13,8 +13,15 @@
   <component name="ChangeListManager">
     <list default="true" id="54133284-335d-4639-aaba-7e9d97043790" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtocolParty.h" beforeDir="false" afterPath="$PROJECT_DIR$/ProtocolParty.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -32,11 +39,12 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="1969" column="58" selection-start-line="1969" selection-start-column="40" selection-end-line="1969" selection-end-column="58" />
+            <state relative-caret-position="-3053">
+              <caret line="2155" column="41" selection-start-line="2155" selection-start-column="4" selection-end-line="2155" selection-end-column="41" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
                 <element signature="e#37907#37924#0" expanded="true" />
+                <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
               </folding>
             </state>
           </provider>
@@ -63,8 +71,8 @@
       <file leaf-file-name="stl_vector.h" pinned="false" current-in-tab="false">
         <entry file="file:///usr/include/c++/6/bits/stl_vector.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="159" selection-start-line="159" selection-end-line="159" />
+            <state relative-caret-position="159">
+              <caret line="824" selection-start-line="824" selection-end-line="824" />
             </state>
           </provider>
         </entry>
@@ -113,8 +121,8 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+            <state relative-caret-position="320">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -123,36 +131,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>myprg</find>
-      <find>forInterpolate2T</find>
-      <find>init</find>
-      <find>initializationPhase</find>
-      <find>(i-m_partyId&lt;=2*T</find>
-      <find>myPrgs</find>
-      <find>2T</find>
-      <find>Prgs</find>
-      <find>fromOthersTPrgs</find>
-      <find>i!=m_partyId</find>
-      <find>sendBufsBytes</find>
-      <find>getChannel</find>
-      <find>fromOthers2TPrgs</find>
-      <find>processMultDN</find>
-      <find>xyMinusRShares</find>
-      <find>matrices_for_interpolate</find>
+      <find>generate</find>
+      <find>offlineDNForMultiplication</find>
+      <find>interpolate</find>
+      <find>beta</find>
       <find>matrix_for_interpolate</find>
-      <find>matrices</find>
-      <find>matrix_him</find>
-      <find>m_partyId</find>
-      <find>matrix_for_interpolate_for_t_random_shares</find>
-      <find>roundFunctionSync</find>
-      <find>currBetaForT</find>
-      <find>currBetaFor2T</find>
-      <find>my2TPrgs</find>
-      <find>alternativeGenerateRandom2TAndTShares</find>
-      <find>initMatricesForRandomSharesAndKeys</find>
-      <find>matrix_for_interpolate_mult2T</find>
       <find>interpolateForParty</find>
-      <find>randomTAnd2TShares</find>
+      <find>matrix_for_interpolate_mult2T</find>
+      <find>alpha</find>
+      <find>initMatricesForRandomSharesAndKeys</find>
+      <find>fromoth</find>
+      <find>interpolate(</find>
+      <find>calcShares</find>
+      <find>sendBufsBytes</find>
+      <find>randomElementsToFill</find>
+      <find>2*T</find>
+      <find>matrix_for_interpolate_for_2t_random_shares</find>
+      <find>(!</find>
+      <find>index</find>
+      <find>recBufsBytes</find>
+      <find>(i - m_partyId &lt;= T &amp;&amp; i - m_partyId &gt; 0) ||</find>
+      <find>sendBufsElements</find>
+      <find>y1</find>
+      <find>(m_partyId - i &lt;= T &amp;&amp; m_partyId - i &gt; 0) || ((</find>
+      <find>generaterandom2</find>
+      <find>generateRandom2TAndTShares</find>
+      <find>fromOthers2TPrgs</find>
+      <find>alternativeGenerateRandom2TAndTShares</find>
+      <find>y2</find>
+      <find>matrix_for_interpolate_for_t_random_shares</find>
+      <find>counter2T</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -503,27 +511,27 @@
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
       <workItem from="1537098558692" duration="13077000" />
-      <workItem from="1538454177511" duration="17417000" />
+      <workItem from="1538454177511" duration="34367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="355462000" />
+    <option name="totallyTimeSpent" value="372412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12844037" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.054506205" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.2345679" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.15123457" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.20781893" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.41049382" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.22530864" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.21090534" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -546,33 +554,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1148</line>
+          <line>1144</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1395</line>
+          <line>1392</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1550</line>
+          <line>1555</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1594</line>
-          <option name="timeStamp" value="82" />
+          <line>2154</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1574</line>
-          <option name="timeStamp" value="83" />
+          <line>950</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1570</line>
-          <option name="timeStamp" value="85" />
+          <line>1793</line>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -585,7 +593,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="86" />
+      <option name="time" value="92" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -644,6 +652,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
           </folding>
         </state>
       </provider>
@@ -681,6 +690,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
           </folding>
         </state>
       </provider>
@@ -746,6 +756,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
           </folding>
         </state>
       </provider>
@@ -984,13 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1014,18 +1018,26 @@
     </entry>
     <entry file="file:///usr/include/c++/6/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        <state relative-caret-position="159">
+          <caret line="824" selection-start-line="824" selection-end-line="824" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="1969" column="58" selection-start-line="1969" selection-start-column="40" selection-end-line="1969" selection-end-column="58" />
+        <state relative-caret-position="-3053">
+          <caret line="2155" column="41" selection-start-line="2155" selection-start-column="4" selection-end-line="2155" selection-end-column="41" />
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
           </folding>
         </state>
       </provider>

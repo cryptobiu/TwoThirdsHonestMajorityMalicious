@@ -840,7 +840,6 @@ bool ProtocolParty<FieldType>::generateSecureDoubleSharings(int no_random)
     }
     return true;
 }
-
 template <class FieldType>
 void ProtocolParty<FieldType>::generateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill){
 
@@ -1138,9 +1137,6 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
 
     int fieldByteSize = field->getElementSizeInBytes();
     for (int i = 0; i < N; i++) {
-//        for(int j=0; j<sendBufsElements[i].size();j++) {
-//            field->elementToBytes(sendBufsBytes[i].data() + (j * fieldByteSize), sendBufsElements[i][j]);
-//        }
 
         field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
     }
@@ -1201,8 +1197,8 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
             if (m_partyId <= 2 * T) {//calc only for these parties
                 //set the 2T shares
 
-                if ((m_partyId == (i - (2 * T - 1)))) {
-                    t1[i] = field->bytesToElement(rec2TShares.data() + (k * fieldByteSize));
+                if ((m_partyId == (i - (2 * T + 1)))) {
+                    t2[i] = field->bytesToElement(rec2TShares.data() + (k * fieldByteSize));
                 } else if (i == m_partyId) {
                     t2[i] = y2[m_partyId][k];
 
@@ -1216,9 +1212,11 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
         matrix_vand_transpose.MatrixMult(t1, r1, N - T);
 
 
-        //do the actual random elements calculations only for parties that need the 2T random share
-        //for the multiplication
-        matrix_vand_transpose.MatrixMult(t2, r2, N - T);
+        if (m_partyId <= 2 * T) {
+            //do the actual random elements calculations only for parties that need the 2T random share
+            //for the multiplication
+            matrix_vand_transpose.MatrixMult(t2, r2, N - T);
+        }
 
         //copy the resulting vector to the array of randoms
         for (int i = 0; i < (N - T); i++) {
@@ -1254,6 +1252,8 @@ void ProtocolParty<FieldType>::initializationPhase()
     vector<FieldType> alpha2(T);
 
     beta[0] = field->GetElement(0); // zero of the field
+
+    matrix_for_interpolate.allocate(1,N, field);
 
 
     my2TPrgs.resize(N);
@@ -1328,8 +1328,9 @@ void ProtocolParty<FieldType>::initializationPhase()
 
 
 
+    matrix_for_interpolate.InitHIMByVectors(alpha, beta);
 
-    vector<FieldType> currAlpha(2*T+1);
+    //vector<FieldType> currAlpha(2*T+1);
 
 
 
@@ -1356,18 +1357,14 @@ void ProtocolParty<FieldType>::initializationPhase()
 
 
 
-    int counter = 0;
-    for(int i=0; i<N; i++) {
+//    for(int i=0; i<=2*T; i++) {
+//
+//            currAlpha[i] = alpha[i];
+//
+//    }
 
-        if(i<=2*T){
-
-
-            currAlpha[counter] = alpha[i];
-            counter++;
-
-        }
-    }
-    alpha.resize(2*T+1);
+    vector<FieldType> currAlpha = alpha;
+    currAlpha.resize(2*T + 1);
     matrix_for_interpolate_mult2T.allocate(1,2*T+1, field);
     matrix_for_interpolate_mult2T.InitHIMByVectors(currAlpha, beta);
 
@@ -1381,7 +1378,7 @@ void ProtocolParty<FieldType>::initializationPhase()
 //    matrix_for_interpolate.allocate(1,2*T+1, field);
 //    matrix_for_interpolate.InitHIMByVectors(alpha, beta);
 
-   // initMatricesForRandomSharesAndKeys();
+    initMatricesForRandomSharesAndKeys();
 
 }
 
@@ -1418,7 +1415,7 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
     prg.getPRGBytes(mykey, 0, sizeOfSeed);
 
     SecretKey key(mykey, "aes");
-    //my2TPrgs[m_partyId].setKey(key);
+    my2TPrgs[m_partyId].setKey(key);
 
     prg.getPRGBytes(mykey, 0, sizeOfSeed);
 
@@ -1494,7 +1491,7 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
         //sent seed for 2T shares
         if(m_partyId<=2*T) {
 
-            if (i <= 2*T) {
+            if (i <= 2*T && i!=m_partyId) {
 
 
                 //fill the send buf with seed to 2T other parties and me
@@ -1518,9 +1515,8 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
         }
 
         if(m_partyId>2*T) {
-            if (i <= 2*T && i!=(m_partyId - (2*T+1))) {//do not sent to this party, calc for it the share
+            if (i <= 2*T ) {//do not sent to this party, calc for it the share
                                                      //we do not want to send always to party 2T, incase this party id is less than 2T.
-
 
                 //fill the send buf with seed to 2T other parties and me
                 sendBufsBytes[i].resize(sizeOfSeed);
@@ -1530,15 +1526,24 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
                 my2TPrgs[i].setKey(key);
 
 
-                currAlphaFor2T[counterAlphaFor2T] = alpha[i];
 
-                counterAlphaFor2T++;
+                if( i==(m_partyId - (2*T+1))) {
+
+                    sendBufsBytes[i].resize(0);
+
+                }
+                else{
+                    currAlphaFor2T[counterAlphaFor2T] = alpha[i];
+
+                    counterAlphaFor2T++;
+                }
+
 
 
             } else {
                 sendBufsBytes[i].resize(0);
 //
-//                if(i==(m_partyId - (2*T-1))) {//set beta, as we will calc the share for this party and not use the prg for it
+//                if(i==(m_partyId - (2*T+1))) {//set beta, as we will calc the share for this party and not use the prg for it
 //
 //                    currBetaFor2T[0] = alpha[i];
 //
@@ -1554,12 +1559,12 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
 
             recBufsBytes[i].resize(sizeOfSeed);
 
-            if(m_partyId==(i - (2*T-1)))//do not recieve from this party, the party will calculate the share for me and that share wiill be recieved
+            if(m_partyId==(i - (2*T+1)))//do not recieve from this party, the party will calculate the share for me and that share wiill be recieved
                 recBufsBytes[i].resize(0);
         }
     }
     else{
-        currBetaFor2T[0] = alpha[m_partyId - (2*T-1)];
+        currBetaFor2T[0] = alpha[m_partyId - (2*T+1)];
         for (int i = 0; i < N; i++) {
 
             recBufsBytes[i].resize(0);
@@ -1576,8 +1581,7 @@ void ProtocolParty<FieldType>::initMatricesForRandomSharesAndKeys(){
         for (int i = 0; i < N; i++) {
 
 
-
-            if(m_partyId!=(i - (2*T-1))) {//do not recieve from this party
+            if(m_partyId!=(i - (2*T+1))&& i!=m_partyId) {//do not recieve from this party
                 SecretKey key(recBufsBytes[i], "aes");
                 fromOthers2TPrgs[i].setKey(key);
             }
@@ -1818,7 +1822,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
         if (gate.gateType == MULT) {
 
-            if(m_partyId<=2*T) {
+            if(m_partyId<=2*T) {//only the first 2t+1 paties have the 2T share
 
 
                 //compute the share of xy-r
@@ -1850,7 +1854,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
             currentNumOfElements++;
 
         //should send
-        if(m_partyId<=2*T){
+        if(m_partyId<=2*T ){
 
 
             //fill the send buf according to the number of elements to send to each party
@@ -1866,7 +1870,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
         }
         else{
             sendBufsBytes[i].resize(0);
-            counter+=currentNumOfElements;//temp should not even create the elements
+            //counter+=currentNumOfElements;//temp should not even create the elements
         }
     }
 
@@ -1896,6 +1900,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
     //reconstruct the shares that I am responsible of recieved from the other parties
     vector<FieldType> xyMinurAllShares(2*T+1);
+    //vector<FieldType> xyMinurAllShares(N);
     counter = 0;
 
     for (int k = 0;k < myNumOfElementsToExpect; k++)//go over only the logit gates
@@ -1911,6 +1916,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
         }
 
         xyMinusR[k] = interpolateForParty(xyMinurAllShares, m_partyId);
+        //xyMinusR[k] = interpolate(xyMinurAllShares);
         counter = 0;
 
     }
@@ -1978,12 +1984,176 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
     return index;
 }
 
+//
+//template <class FieldType>
+//int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
+//
+//    int index = 0;
+//    int fieldByteSize = field->getElementSizeInBytes();
+//    int maxNumberOfLayerMult = circuit.getLayers()[currentCirciutLayer + 1] - circuit.getLayers()[currentCirciutLayer];
+//    vector<FieldType> xyMinusRShares(maxNumberOfLayerMult*2);//hold both in the same vector to send in one batch
+//
+//    vector<FieldType> xyMinusR;//hold both in the same vector to send in one batch
+//    vector<byte> xyMinusRBytes;
+//
+//    vector<vector<byte>> recBufsBytes(N);
+//    vector<vector<byte>> sendBufsBytes(N);
+//    vector<vector<FieldType>> sendBufsElements(N);
+//
+//
+//
+//
+//
+//    //generate the shares for x+a and y+b. do it in the same array to send once
+//    for (int k = circuit.getLayers()[currentCirciutLayer];
+//         k < circuit.getLayers()[currentCirciutLayer + 1]; k++)//go over only the logit gates
+//    {
+//        auto gate = circuit.getGates()[k];
+//
+//        if (gate.gateType == MULT) {
+//
+//            //compute the share of xy-r
+//            xyMinusRShares[index] = gateShareArr[gate.input1]*gateShareArr[gate.input2] - randomTAnd2TShares[2*indexInRandomArray+1];
+//
+//
+//            indexInRandomArray++;
+//
+//            index++;
+//        }
+//    }
+//
+//    if(index==0)
+//        return 0;
+//
+//    //set the acctual number of mult gate proccessed in this layer
+//    int acctualNumOfMultGates = index;
+//    int numOfElementsForParties = acctualNumOfMultGates/N;
+//    int indexForDecreasingSize = acctualNumOfMultGates - numOfElementsForParties *N;
+//
+//    int counter=0;
+//    int currentNumOfElements;
+//    for(int i=0; i<N; i++){
+//
+//        currentNumOfElements = numOfElementsForParties;
+//        if(i<indexForDecreasingSize)
+//            currentNumOfElements++;
+//
+//        //fill the send buf according to the number of elements to send to each party
+//        sendBufsElements[i].resize(currentNumOfElements);
+//        sendBufsBytes[i].resize(currentNumOfElements*fieldByteSize);
+//        for(int j=0; j<currentNumOfElements; j++) {
+//
+//            sendBufsElements[i][j] = xyMinusRShares[counter];
+//            counter++;
+//
+//        }
+//        field->elementVectorToByteVector(sendBufsElements[i], sendBufsBytes[i]);
+//
+//    }
+//
+//    //resize the recbuf array.
+//    int myNumOfElementsToExpect = numOfElementsForParties;
+//    if (m_partyId < indexForDecreasingSize) {
+//        myNumOfElementsToExpect = numOfElementsForParties + 1;
+//    }
+//    for(int i=0;i<N;i++){
+//
+//        recBufsBytes[i].resize(myNumOfElementsToExpect*fieldByteSize);
+//    }
+//
+//
+//
+//    roundFunctionSync(sendBufsBytes, recBufsBytes,20);
+//
+//
+//    xyMinusR.resize(myNumOfElementsToExpect);
+//    xyMinusRBytes.resize(myNumOfElementsToExpect*fieldByteSize);
+//
+//    //reconstruct the shares that I am responsible of recieved from the other parties
+//    vector<FieldType> xyMinurAllShares(N);
+//
+//    for (int k = 0;k < myNumOfElementsToExpect; k++)//go over only the logit gates
+//    {
+//        for (int i = 0; i < N; i++) {
+//
+//            xyMinurAllShares[i] = field->bytesToElement(recBufsBytes[i].data() + (k * fieldByteSize));
+//        }
+//
+//        // reconstruct the shares by P0
+//        xyMinusR[k] = interpolate(xyMinurAllShares);
+//
+//    }
+//
+//    field->elementVectorToByteVector(xyMinusR, xyMinusRBytes);
+//
+//    //prepare the send buffers
+//    for(int i=0; i<N; i++){
+//        sendBufsBytes[i] = xyMinusRBytes;
+//    }
+//
+//
+//    for(int i=0; i<N; i++){
+//
+//        currentNumOfElements = numOfElementsForParties;
+//        if(i<indexForDecreasingSize)
+//            currentNumOfElements++;
+//
+//        recBufsBytes[i].resize(currentNumOfElements* fieldByteSize);
+//
+//    }
+//
+//    roundFunctionSync(sendBufsBytes, recBufsBytes,21);
+//
+//
+//    xyMinusR.resize(acctualNumOfMultGates);
+//    counter = 0;
+//
+//    for(int i=0; i<N; i++){
+//
+//        currentNumOfElements = numOfElementsForParties;
+//        if(i<indexForDecreasingSize)
+//            currentNumOfElements++;
+//
+//        //fill the send buf according to the number of elements to send to each party
+//        for(int j=0; j<currentNumOfElements; j++) {
+//
+//            xyMinusR[counter] = field->bytesToElement(recBufsBytes[i].data() + (j * fieldByteSize));
+//            counter++;
+//
+//        }
+//
+//    }
+//
+//
+//    indexInRandomArray -= index;
+//    index = 0;
+//
+//    //after the xPlusAAndYPlusB array is filled, we are ready to fill the output of the mult gates
+//    for (int k = circuit.getLayers()[currentCirciutLayer];
+//         k < circuit.getLayers()[currentCirciutLayer + 1]; k++)//go over only the logit gates
+//    {
+//        auto gate = circuit.getGates()[k];
+//
+//        if (gate.gateType == MULT) {
+//
+//            gateShareArr[gate.output] = randomTAnd2TShares[2*indexInRandomArray] + xyMinusR[index];
+//
+//            index++;
+//            indexInRandomArray++;
+//
+//        }
+//    }
+//
+//    return index;
+//}
+//
+
 
 template <class FieldType>
 void ProtocolParty<FieldType>::offlineDNForMultiplication(int numOfTriples){
 
-    generateRandom2TAndTShares(numOfTriples,randomTAnd2TShares);
-    //alternativeGenerateRandom2TAndTShares(numOfTriples,randomTAnd2TShares);
+    //generateRandom2TAndTShares(numOfTriples,randomTAnd2TShares);
+    alternativeGenerateRandom2TAndTShares(numOfTriples,randomTAnd2TShares);
 
 }
 
