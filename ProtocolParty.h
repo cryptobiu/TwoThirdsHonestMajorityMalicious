@@ -974,6 +974,7 @@ template <class FieldType>
 void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRandomPairs, vector<FieldType>& randomElementsToFill) {
 
 
+    int countGetBytes = 0;
     int index = 0;
     vector<vector<byte>> recBufsBytes(N);
     int robin = 0;
@@ -992,6 +993,8 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
     // the number of buckets (each bucket requires one double-sharing
     // from each party and gives N-2T random double-sharings)
     int no_buckets = (no_random / (N - T)) + 1;
+
+    cout<<"num of buckets is : "<<no_buckets<<endl;
 
     vector<vector<FieldType>> y2(N);
 
@@ -1053,6 +1056,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                 forInterpolate[counter] = y1[i] =
                         field->bytesToElement(myTPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
+                countGetBytes++;
                 counter++;
             }
 
@@ -1067,6 +1071,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                             my2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
                     counter2T++;
+                    countGetBytes++;
                 }
 
             } else {//m_partyId<<2*T
@@ -1081,6 +1086,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                             my2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
                     counter2T++;
+                    countGetBytes++;
 
                 }
 
@@ -1187,6 +1193,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
 
             if ((i - m_partyId <= T && i - m_partyId > 0) || ((N + i) - m_partyId) <= T) {
                 t1[i] = field->bytesToElement(fromOthersTPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
+                countGetBytes++;
 
             } else {
 
@@ -1204,6 +1211,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
 
                 } else {
                     t2[i] = field->bytesToElement(fromOthers2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
+                    countGetBytes++;
                 }
 
             }
@@ -1227,6 +1235,8 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
 
         }
     }
+
+    cout<<"number of calls to getBytes is: " <<countGetBytes<<endl;
 }
 
 
@@ -1615,9 +1625,15 @@ bool ProtocolParty<FieldType>::preparationPhase()
         generateSecureDoubleSharings(3*delta + keysize);
 
 
+    cout<<"number of multiplication gates is : "<< circuit.getNrOfMultiplicationGates()<<endl;
+    cout<<"N is : "<< N<<endl;
+    cout<<"T is : "<< T<<endl;
+
+
     //run offline for all the future multiplications including the multiplication of the protocol
 
     offlineDNForMultiplication(circuit.getNrOfMultiplicationGates());
+
 
 
     return true;

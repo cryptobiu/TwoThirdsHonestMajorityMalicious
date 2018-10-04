@@ -13,15 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="54133284-335d-4639-aaba-7e9d97043790" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/HashEncrypt.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolTimer.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/TemplateField.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ZpKaratsubaElement.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtocolParty.h" beforeDir="false" afterPath="$PROJECT_DIR$/ProtocolParty.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -36,15 +29,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3053">
-              <caret line="2155" column="41" selection-start-line="2155" selection-start-column="4" selection-end-line="2155" selection-end-column="41" />
+            <state relative-caret-position="227">
+              <caret line="996" column="51" selection-start-line="996" selection-start-column="51" selection-end-line="996" selection-end-column="51" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
                 <element signature="e#37907#37924#0" expanded="true" />
-                <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
+                <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
               </folding>
             </state>
           </provider>
@@ -118,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="80">
+              <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -131,9 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>generate</find>
-      <find>offlineDNForMultiplication</find>
-      <find>interpolate</find>
       <find>beta</find>
       <find>matrix_for_interpolate</find>
       <find>interpolateForParty</find>
@@ -157,10 +147,13 @@
       <find>generaterandom2</find>
       <find>generateRandom2TAndTShares</find>
       <find>fromOthers2TPrgs</find>
-      <find>alternativeGenerateRandom2TAndTShares</find>
       <find>y2</find>
       <find>matrix_for_interpolate_for_t_random_shares</find>
       <find>counter2T</find>
+      <find>preparing</find>
+      <find>getPRGBytesEX</find>
+      <find>offlineDNForMultiplication</find>
+      <find>alternativeGenerateRandom2TAndTShares</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,8 +168,8 @@
         <option value="$PROJECT_DIR$/GF2_8LookupTable.h" />
         <option value="$USER_HOME$/libscapi/include/primitives/Matrix.hpp" />
         <option value="$PROJECT_DIR$/TemplateField.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ProtocolParty.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -511,18 +504,18 @@
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
       <workItem from="1537098558692" duration="13077000" />
-      <workItem from="1538454177511" duration="34367000" />
+      <workItem from="1538454177511" duration="40237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372412000" />
+    <option name="totallyTimeSpent" value="378282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.054506205" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13653535" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.15123457" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.20781893" />
@@ -554,22 +547,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1144</line>
+          <line>1150</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1392</line>
+          <line>1402</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1555</line>
+          <line>1565</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>2154</line>
+          <line>2170</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -579,7 +572,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1793</line>
+          <line>1809</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
@@ -652,7 +645,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
+            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
           </folding>
         </state>
       </provider>
@@ -690,7 +683,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
+            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
           </folding>
         </state>
       </provider>
@@ -756,7 +749,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
+            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1023,22 +1016,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3053">
-          <caret line="2155" column="41" selection-start-line="2155" selection-start-column="4" selection-end-line="2155" selection-end-column="41" />
+        <state relative-caret-position="227">
+          <caret line="996" column="51" selection-start-line="996" selection-start-column="51" selection-end-line="996" selection-end-column="51" />
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538555112697" expanded="true" signature="37310:38819" ph="..." />
+            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
         </state>
       </provider>
     </entry>
