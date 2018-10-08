@@ -1056,6 +1056,11 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                 forInterpolate[counter] = y1[i] =
                         field->bytesToElement(myTPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
+//                if (k == 10)
+//                    cout << m_partyId << " my prg outputs is: " << forInterpolate[counter] << " for party " << i
+//                         << endl;
+
+
                 countGetBytes++;
                 counter++;
             }
@@ -1070,8 +1075,11 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                     forInterpolate2T[counter2T] = y2[i][k] = field->bytesToElement(
                             my2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
+//                    if(k==100000)
+//                        cout<<m_partyId << " my prg outputs is: " <<forInterpolate2T[counter2T]<< " for party " <<i<<endl;
+
                     counter2T++;
-                    countGetBytes++;
+                    //countGetBytes++;
                 }
 
             } else {//m_partyId<<2*T
@@ -1085,48 +1093,56 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                     forInterpolate2T[counter2T] = y2[i][k] = field->bytesToElement(
                             my2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
 
+//                    if(k==100000)
+//                        cout<<m_partyId << " my prg outputs is: " <<forInterpolate2T[counter2T]<< " for party " <<i<<endl;
+
                     counter2T++;
-                    countGetBytes++;
+                    //countGetBytes++;
 
                 }
 
 
-            }
-
-            //generate the shares for all other parties
-            matrix_for_interpolate_for_t_random_shares.MatrixMult(forInterpolate, calcShares);
-
-
-            counter = 0;
-            for (int i = 0; i < N; i++) {
-
-                //fill the calculated shares for the parties that do not have keys including me
-                if (!((m_partyId - i <= T && m_partyId - i > 0) || ((N + m_partyId) - i) <= T)) {
-
-                    y1[i] = calcShares[counter];
-
-                    sendBufsElements[i][k] = y1[i];
-                    counter++;
-                }
-
-
-            }
-            counter = 1;
-            counter2T = 1;
-
-            matrix_for_interpolate_for_2t_random_shares.MatrixMult(forInterpolate2T, calcShares2T);
-
-
-            if (m_partyId <= 2 * T) {
-                //set my share to the calculated one
-                y2[m_partyId][k] = calcShares2T[0];
-            } else {
-
-                //will need to send this to the relevant party
-                y2[m_partyId - (2 * T + 1)][k] = calcShares2T[0];
             }
         }
+
+        //generate the shares for all other parties
+        matrix_for_interpolate_for_t_random_shares.MatrixMult(forInterpolate, calcShares);
+
+
+        counter = 0;
+        for (int i = 0; i < N; i++) {
+
+            //fill the calculated shares for the parties that do not have keys including me
+            if (!((m_partyId - i <= T && m_partyId - i > 0) || ((N + m_partyId) - i) <= T)) {
+
+                y1[i] = calcShares[counter];
+
+//                if(k==10)
+//                    cout<<m_partyId << " my prg outputs is: " <<y1[i]<< " for party " <<i<< " counter is :" <<counter<< endl;
+
+                sendBufsElements[i][k] = y1[i];
+                counter++;
+            }
+
+
+        }
+        counter = 1;
+        counter2T = 1;
+
+        matrix_for_interpolate_for_2t_random_shares.MatrixMult(forInterpolate2T, calcShares2T);
+
+
+        if (m_partyId <= 2 * T) {
+            //set my share to the calculated one
+            y2[m_partyId][k] = calcShares2T[0];
+        } else {
+
+            //will need to send this to the relevant party
+            y2[m_partyId - (2 * T + 1)][k] = calcShares2T[0];
+        }
     }
+
+
 
 
     if (flag_print) {
@@ -1193,11 +1209,17 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
 
             if ((i - m_partyId <= T && i - m_partyId > 0) || ((N + i) - m_partyId) <= T) {
                 t1[i] = field->bytesToElement(fromOthersTPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
-                countGetBytes++;
+//
+//                if(k==10)
+//                    cout<<m_partyId << " other prg outputs is: " <<t1[i]<< " for party " <<i<<endl;
+//                countGetBytes++;
 
             } else {
 
                 t1[i] = field->bytesToElement(recBufsBytes[i].data() + (k * fieldByteSize));
+
+//                if(k==10)
+//                    cout<<m_partyId << " other prg outputs is: " <<t1[i]<< " for party " <<i<<endl;
             }
 
 
@@ -1210,8 +1232,12 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
                     t2[i] = y2[m_partyId][k];
 
                 } else {
+
                     t2[i] = field->bytesToElement(fromOthers2TPrgs[i].getPRGBytesEX(field->getElementSizeInBytes()));
-                    countGetBytes++;
+
+//                    if(k==100000)
+//                        cout<<m_partyId <<" other prg outputs is: " <<t2[i]<< " for party " <<i<<endl;
+                   // countGetBytes++;
                 }
 
             }
@@ -1236,7 +1262,7 @@ void ProtocolParty<FieldType>::alternativeGenerateRandom2TAndTShares(int numOfRa
         }
     }
 
-    cout<<"number of calls to getBytes is: " <<countGetBytes<<endl;
+   // cout<<"number of calls to getBytes is: " <<countGetBytes<<endl;
 }
 
 
@@ -1625,9 +1651,9 @@ bool ProtocolParty<FieldType>::preparationPhase()
         generateSecureDoubleSharings(3*delta + keysize);
 
 
-    cout<<"number of multiplication gates is : "<< circuit.getNrOfMultiplicationGates()<<endl;
-    cout<<"N is : "<< N<<endl;
-    cout<<"T is : "<< T<<endl;
+//    cout<<"number of multiplication gates is : "<< circuit.getNrOfMultiplicationGates()<<endl;
+//    cout<<"N is : "<< N<<endl;
+//    cout<<"T is : "<< T<<endl;
 
 
     //run offline for all the future multiplications including the multiplication of the protocol
@@ -2248,9 +2274,9 @@ void ProtocolParty<FieldType>::verificationPhase() {
     t2 = high_resolution_clock::now();
 
     duration = duration_cast<milliseconds>(t2-t1).count();
-    if(flag_print_timings) {
-        cout << "time in milliseconds for preparing arrays: " << duration << endl;
-    }
+//    if(flag_print_timings) {
+//        cout << "time in milliseconds for preparing arrays: " << duration << endl;
+//    }
 
 
     //verify that all sharings on all wires are of degree t
@@ -2284,9 +2310,9 @@ void ProtocolParty<FieldType>::verificationPhase() {
     t2 = high_resolution_clock::now();
 
     duration = duration_cast<milliseconds>(t2-t1).count();
-    if(flag_print_timings) {
-        cout << "time in milliseconds for open share: " << duration << endl;
-    }
+//    if(flag_print_timings) {
+//        cout << "time in milliseconds for open share: " << duration << endl;
+//    }
 
     //verify that sll multiplications were valid
     //3 (a)
@@ -2312,9 +2338,9 @@ void ProtocolParty<FieldType>::verificationPhase() {
     t2 = high_resolution_clock::now();
 
     duration = duration_cast<milliseconds>(t2-t1).count();
-    if(flag_print_timings) {
-        cout << "time in milliseconds for mults: " << duration << endl;
-    }
+//    if(flag_print_timings) {
+//        cout << "time in milliseconds for mults: " << duration << endl;
+//    }
 
     //3 (b)
     openShare(delta, v2TShares, vSecrets, 2*T);

@@ -29,15 +29,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Mersenne.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/libscapi/include/primitives/Mersenne.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="576" column="23" selection-start-line="576" selection-start-column="23" selection-end-line="576" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="996" column="51" selection-start-line="996" selection-start-column="51" selection-end-line="996" selection-end-column="51" />
+            <state relative-caret-position="235">
+              <caret line="1060" column="35" selection-start-line="1058" selection-start-column="18" selection-end-line="1060" selection-end-column="35" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
                 <element signature="e#37907#37924#0" expanded="true" />
-                <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
+                <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
               </folding>
             </state>
           </provider>
@@ -70,6 +79,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Prg.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/libscapi/include/primitives/Prg.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-68">
+              <caret line="226" column="20" selection-start-line="226" selection-start-column="20" selection-end-line="226" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="new_allocator.h" pinned="false" current-in-tab="false">
         <entry file="file:///usr/include/c++/6/ext/new_allocator.h">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,20 +106,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Matrix.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/libscapi/include/primitives/Matrix.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4740">
-              <caret line="237" selection-start-line="237" selection-end-line="237" />
-              <folding>
-                <element signature="e#8388#8408#0" expanded="true" />
-                <element signature="e#8540#8560#0" expanded="true" />
-                <element signature="e#9324#9344#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Mersenne.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/libscapi/src/primitives/Mersenne.cpp">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+            <state relative-caret-position="160">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -124,11 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>beta</find>
-      <find>matrix_for_interpolate</find>
-      <find>interpolateForParty</find>
-      <find>matrix_for_interpolate_mult2T</find>
-      <find>alpha</find>
       <find>initMatricesForRandomSharesAndKeys</find>
       <find>fromoth</find>
       <find>interpolate(</find>
@@ -153,7 +152,12 @@
       <find>preparing</find>
       <find>getPRGBytesEX</find>
       <find>offlineDNForMultiplication</find>
+      <find>random(</find>
       <find>alternativeGenerateRandom2TAndTShares</find>
+      <find>if(k==0)</find>
+      <find>forInterpolate</find>
+      <find>k==</find>
+      <find>cout</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,8 +172,8 @@
         <option value="$PROJECT_DIR$/GF2_8LookupTable.h" />
         <option value="$USER_HOME$/libscapi/include/primitives/Matrix.hpp" />
         <option value="$PROJECT_DIR$/TemplateField.cpp" />
-        <option value="$PROJECT_DIR$/ProtocolParty.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ProtocolParty.h" />
       </list>
     </option>
   </component>
@@ -504,20 +508,20 @@
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
       <workItem from="1537098558692" duration="13077000" />
-      <workItem from="1538454177511" duration="40237000" />
+      <workItem from="1538454177511" duration="49348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378282000" />
+    <option name="totallyTimeSpent" value="387393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13653535" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11440907" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.15123457" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.2489712" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.20781893" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.41049382" />
@@ -547,22 +551,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1150</line>
+          <line>1166</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1402</line>
+          <line>1428</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1565</line>
+          <line>1591</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>2170</line>
+          <line>2196</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -572,7 +576,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1809</line>
+          <line>1835</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
@@ -617,13 +621,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TemplateField.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -645,7 +642,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
+            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
           </folding>
         </state>
       </provider>
@@ -683,7 +680,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
+            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
           </folding>
         </state>
       </provider>
@@ -749,7 +746,7 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
+            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
           </folding>
         </state>
       </provider>
@@ -948,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/libscapi/include/primitives/Mersenne.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5260">
-          <caret line="263" selection-start-line="263" selection-end-line="263" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/libscapi/include/primitives/Matrix.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4740">
@@ -1016,22 +1006,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="996" column="51" selection-start-line="996" selection-start-column="51" selection-end-line="996" selection-end-column="51" />
-          <folding>
-            <element signature="e#819#836#0" expanded="true" />
-            <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538632891154" expanded="true" signature="37497:39076" ph="..." />
-          </folding>
+        <state relative-caret-position="160">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$USER_HOME$/libscapi/include/primitives/Mersenne.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        <state relative-caret-position="396">
+          <caret line="576" column="23" selection-start-line="576" selection-start-column="23" selection-end-line="576" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/libscapi/include/primitives/Prg.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="226" column="20" selection-start-line="226" selection-start-column="20" selection-end-line="226" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="1060" column="35" selection-start-line="1058" selection-start-column="18" selection-end-line="1060" selection-end-column="35" />
+          <folding>
+            <element signature="e#819#836#0" expanded="true" />
+            <element signature="e#37907#37924#0" expanded="true" />
+            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
