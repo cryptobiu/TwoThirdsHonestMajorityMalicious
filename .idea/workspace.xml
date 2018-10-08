@@ -41,12 +41,15 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="1060" column="35" selection-start-line="1058" selection-start-column="18" selection-end-line="1060" selection-end-column="35" />
+            <state relative-caret-position="-2065">
+              <caret line="2253" column="7" lean-forward="true" selection-start-line="2251" selection-start-column="6" selection-end-line="2253" selection-end-column="7" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
                 <element signature="e#37907#37924#0" expanded="true" />
-                <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+                <element signature="e#68161#68178#0" expanded="true" />
+                <element signature="e#79445#79462#0" expanded="true" />
+                <element signature="e#80617#80634#0" expanded="true" />
+                <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,19 +131,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initMatricesForRandomSharesAndKeys</find>
-      <find>fromoth</find>
-      <find>interpolate(</find>
-      <find>calcShares</find>
-      <find>sendBufsBytes</find>
-      <find>randomElementsToFill</find>
-      <find>2*T</find>
-      <find>matrix_for_interpolate_for_2t_random_shares</find>
-      <find>(!</find>
-      <find>index</find>
-      <find>recBufsBytes</find>
       <find>(i - m_partyId &lt;= T &amp;&amp; i - m_partyId &gt; 0) ||</find>
-      <find>sendBufsElements</find>
       <find>y1</find>
       <find>(m_partyId - i &lt;= T &amp;&amp; m_partyId - i &gt; 0) || ((</find>
       <find>generaterandom2</find>
@@ -153,11 +144,23 @@
       <find>getPRGBytesEX</find>
       <find>offlineDNForMultiplication</find>
       <find>random(</find>
-      <find>alternativeGenerateRandom2TAndTShares</find>
       <find>if(k==0)</find>
       <find>forInterpolate</find>
-      <find>k==</find>
       <find>cout</find>
+      <find>my prg</find>
+      <find>alternativeGenerateRandom2TAndTShares</find>
+      <find>sendBufsElements</find>
+      <find>recBufsBytes</find>
+      <find>roundFunctionSyncElements</find>
+      <find>exchangeDataElements</find>
+      <find>sendBufsBytes</find>
+      <find>openShare</find>
+      <find>generatePseudoRandomElements</find>
+      <find>recBufElements</find>
+      <find>roundFunctionSync</find>
+      <find>k==</find>
+      <find>cout&lt;&lt;</find>
+      <find>in milliseconds</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -508,12 +511,12 @@
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
       <workItem from="1537098558692" duration="13077000" />
-      <workItem from="1538454177511" duration="49348000" />
+      <workItem from="1538454177511" duration="55479000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387393000" />
+    <option name="totallyTimeSpent" value="393524000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
@@ -551,32 +554,32 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1166</line>
+          <line>1176</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1428</line>
+          <line>1445</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1591</line>
+          <line>1608</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>2196</line>
+          <line>2216</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>950</line>
+          <line>958</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1835</line>
+          <line>1852</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
@@ -642,7 +645,10 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+            <element signature="e#68161#68178#0" expanded="true" />
+            <element signature="e#79445#79462#0" expanded="true" />
+            <element signature="e#80617#80634#0" expanded="true" />
+            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
           </folding>
         </state>
       </provider>
@@ -680,7 +686,10 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+            <element signature="e#68161#68178#0" expanded="true" />
+            <element signature="e#79445#79462#0" expanded="true" />
+            <element signature="e#80617#80634#0" expanded="true" />
+            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
           </folding>
         </state>
       </provider>
@@ -746,7 +755,10 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+            <element signature="e#68161#68178#0" expanded="true" />
+            <element signature="e#79445#79462#0" expanded="true" />
+            <element signature="e#80617#80634#0" expanded="true" />
+            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1006,13 +1018,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/libscapi/include/primitives/Mersenne.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1027,14 +1032,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="1060" column="35" selection-start-line="1058" selection-start-column="18" selection-end-line="1060" selection-end-column="35" />
+        <state relative-caret-position="-2065">
+          <caret line="2253" column="7" lean-forward="true" selection-start-line="2251" selection-start-column="6" selection-end-line="2253" selection-end-column="7" />
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
-            <marker date="1538975756107" expanded="true" signature="38084:40074" ph="..." />
+            <element signature="e#68161#68178#0" expanded="true" />
+            <element signature="e#79445#79462#0" expanded="true" />
+            <element signature="e#80617#80634#0" expanded="true" />
+            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
           </folding>
         </state>
       </provider>
