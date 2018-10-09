@@ -16,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/ProtocolParty.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/MPCHonestMajorityNoTriplesYehuda.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtocolParty.h" beforeDir="false" afterPath="$PROJECT_DIR$/ProtocolParty.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_protocol.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_protocol.sh" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -41,15 +42,16 @@
       <file leaf-file-name="ProtocolParty.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2065">
-              <caret line="2253" column="7" lean-forward="true" selection-start-line="2251" selection-start-column="6" selection-end-line="2253" selection-end-column="7" />
+            <state relative-caret-position="-114">
+              <caret line="2538" column="12" selection-start-line="2538" selection-start-column="12" selection-end-line="2538" selection-end-column="12" />
               <folding>
                 <element signature="e#819#836#0" expanded="true" />
                 <element signature="e#37907#37924#0" expanded="true" />
+                <element signature="e#62298#62315#0" expanded="true" />
                 <element signature="e#68161#68178#0" expanded="true" />
                 <element signature="e#79445#79462#0" expanded="true" />
                 <element signature="e#80617#80634#0" expanded="true" />
-                <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
+                <marker date="1539068762666" expanded="true" signature="32348:33816" ph="..." />
               </folding>
             </state>
           </provider>
@@ -131,18 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>(i - m_partyId &lt;= T &amp;&amp; i - m_partyId &gt; 0) ||</find>
-      <find>y1</find>
-      <find>(m_partyId - i &lt;= T &amp;&amp; m_partyId - i &gt; 0) || ((</find>
-      <find>generaterandom2</find>
-      <find>generateRandom2TAndTShares</find>
-      <find>fromOthers2TPrgs</find>
-      <find>y2</find>
-      <find>matrix_for_interpolate_for_t_random_shares</find>
-      <find>counter2T</find>
-      <find>preparing</find>
-      <find>getPRGBytesEX</find>
-      <find>offlineDNForMultiplication</find>
       <find>random(</find>
       <find>if(k==0)</find>
       <find>forInterpolate</find>
@@ -153,7 +143,6 @@
       <find>recBufsBytes</find>
       <find>roundFunctionSyncElements</find>
       <find>exchangeDataElements</find>
-      <find>sendBufsBytes</find>
       <find>openShare</find>
       <find>generatePseudoRandomElements</find>
       <find>recBufElements</find>
@@ -161,6 +150,19 @@
       <find>k==</find>
       <find>cout&lt;&lt;</find>
       <find>in milliseconds</find>
+      <find>roundfun</find>
+      <find>isHonest</find>
+      <find>processmu</find>
+      <find>processMultDN</find>
+      <find>isPRF</find>
+      <find>alternative</find>
+      <find>processMultiplications</find>
+      <find>alternativeprocessMultDN</find>
+      <find>verificationp</find>
+      <find>openshare</find>
+      <find>sendBufsBytes</find>
+      <find>isPR</find>
+      <find>sendbuf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -511,12 +513,12 @@
       <workItem from="1536730472084" duration="26558000" />
       <workItem from="1537078685479" duration="17490000" />
       <workItem from="1537098558692" duration="13077000" />
-      <workItem from="1538454177511" duration="55479000" />
+      <workItem from="1538454177511" duration="60921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393524000" />
+    <option name="totallyTimeSpent" value="398966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="-2" width="1853" height="1082" extended-state="6" />
@@ -554,32 +556,32 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1176</line>
+          <line>1037</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1445</line>
+          <line>1236</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1608</line>
+          <line>1393</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>2216</line>
+          <line>1979</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>958</line>
+          <line>859</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ProtocolParty.h</url>
-          <line>1852</line>
+          <line>1629</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
@@ -645,10 +647,11 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <element signature="e#62298#62315#0" expanded="true" />
             <element signature="e#68161#68178#0" expanded="true" />
             <element signature="e#79445#79462#0" expanded="true" />
             <element signature="e#80617#80634#0" expanded="true" />
-            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
+            <marker date="1539068762666" expanded="true" signature="32348:33816" ph="..." />
           </folding>
         </state>
       </provider>
@@ -686,10 +689,11 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <element signature="e#62298#62315#0" expanded="true" />
             <element signature="e#68161#68178#0" expanded="true" />
             <element signature="e#79445#79462#0" expanded="true" />
             <element signature="e#80617#80634#0" expanded="true" />
-            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
+            <marker date="1539068762666" expanded="true" signature="32348:33816" ph="..." />
           </folding>
         </state>
       </provider>
@@ -755,10 +759,11 @@
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <element signature="e#62298#62315#0" expanded="true" />
             <element signature="e#68161#68178#0" expanded="true" />
             <element signature="e#79445#79462#0" expanded="true" />
             <element signature="e#80617#80634#0" expanded="true" />
-            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
+            <marker date="1539068762666" expanded="true" signature="32348:33816" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1041,15 +1046,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProtocolParty.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2065">
-          <caret line="2253" column="7" lean-forward="true" selection-start-line="2251" selection-start-column="6" selection-end-line="2253" selection-end-column="7" />
+        <state relative-caret-position="-114">
+          <caret line="2538" column="12" selection-start-line="2538" selection-start-column="12" selection-end-line="2538" selection-end-column="12" />
           <folding>
             <element signature="e#819#836#0" expanded="true" />
             <element signature="e#37907#37924#0" expanded="true" />
+            <element signature="e#62298#62315#0" expanded="true" />
             <element signature="e#68161#68178#0" expanded="true" />
             <element signature="e#79445#79462#0" expanded="true" />
             <element signature="e#80617#80634#0" expanded="true" />
-            <marker date="1538994113071" expanded="true" signature="39129:41228" ph="..." />
+            <marker date="1539068762666" expanded="true" signature="32348:33816" ph="..." />
           </folding>
         </state>
       </provider>
