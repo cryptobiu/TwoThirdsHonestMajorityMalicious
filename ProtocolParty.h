@@ -304,18 +304,6 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
     numOfOutputGates = circuit.getNrOfOutputGates();
     myInputs.resize(numOfInputGates);
     counter = 0;
-
-    readMyInputs();
-
-    auto t1 = high_resolution_clock::now();
-    initializationPhase();
-
-    auto t2 = high_resolution_clock::now();
-
-    auto duration = duration_cast<milliseconds>(t2-t1).count();
-    if(flag_print_timings) {
-        cout << "time in milliseconds initializationPhase: " << duration << endl;
-    }
     
     MPCCommunication comm;
     string partiesFile = this->getParser().getValueByKey(arguments, "partiesFile");
@@ -334,6 +322,19 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
             parties[i]->getChannel()->write(tmp);
         }
     }
+
+    readMyInputs();
+
+    auto t1 = high_resolution_clock::now();
+    initializationPhase();
+
+    auto t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>(t2-t1).count();
+    if(flag_print_timings) {
+        cout << "time in milliseconds initializationPhase: " << duration << endl;
+    }
+    
 }
 
 
