@@ -18,7 +18,6 @@
 #include <libscapi/include/infra/Common.hpp>
 #include <libscapi/include/primitives/Prg.hpp>
 #include "HashEncrypt.h"
-#include <emmintrin.h>
 #include <thread>
 
 #define flag_print false
