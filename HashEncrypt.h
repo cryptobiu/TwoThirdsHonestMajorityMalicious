@@ -20,7 +20,7 @@ public:
 
 private:
     int _finalSizeBytes = 16;
-    EVP_CIPHER_CTX _ctx;
+    EVP_CIPHER_CTX *_ctx;
     unsigned char _key[16]; // 128-bit key
     unsigned char *_iv;     // initialization vector
     int _unusedOutl;

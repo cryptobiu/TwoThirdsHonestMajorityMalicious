@@ -16,13 +16,13 @@ HashEncrypt::HashEncrypt(const unsigned char *key, const unsigned char *iv, size
     _iv = new unsigned char[ivSizeBytes];
     memcpy(_iv, iv, ivSizeBytes);
 
-    EVP_CIPHER_CTX_init(&_ctx);
+    EVP_CIPHER_CTX_init(_ctx);
 
-    EVP_EncryptInit_ex(&_ctx, EVP_aes_128_gcm(), NULL, NULL, NULL); //TODO check return value == 1
+    EVP_EncryptInit_ex(_ctx, EVP_aes_128_gcm(), NULL, NULL, NULL); //TODO check return value == 1
 
-    EVP_CIPHER_CTX_ctrl(&_ctx, EVP_CTRL_GCM_SET_IVLEN, ivSizeBytes, NULL);
+    EVP_CIPHER_CTX_ctrl(_ctx, EVP_CTRL_GCM_SET_IVLEN, ivSizeBytes, NULL);
 
-    EVP_EncryptInit_ex(&_ctx, NULL, NULL, _key, _iv);
+    EVP_EncryptInit_ex(_ctx, NULL, NULL, _key, _iv);
 
 }
 
@@ -31,7 +31,7 @@ HashEncrypt::HashEncrypt(const unsigned char *key, const unsigned char *iv, size
  */
 HashEncrypt::~HashEncrypt()
 {
-    EVP_CIPHER_CTX_cleanup(&_ctx);
+    EVP_CIPHER_CTX_cleanup(_ctx);
 
     delete[] _iv;
     _iv = nullptr;
@@ -46,7 +46,7 @@ void HashEncrypt::hashUpdate(unsigned char *in, int inSizeBytes)
 {
     //CXXPROF_ACTIVITY("gcm update");
 
-    EVP_EncryptUpdate(&_ctx, NULL, &_unusedOutl, in, inSizeBytes); //TODO check return value == 1
+    EVP_EncryptUpdate(_ctx, NULL, &_unusedOutl, in, inSizeBytes); //TODO check return value == 1
 }
 
 
@@ -59,8 +59,8 @@ void HashEncrypt::hashFinal(unsigned char *out, unsigned int *outSizeBytes)
 {
     //CXXPROF_ACTIVITY("gcm final");
 
-    EVP_EncryptFinal_ex(&_ctx, NULL, &_unusedOutl); //TODO check return value == 1
+    EVP_EncryptFinal_ex(_ctx, NULL, &_unusedOutl); //TODO check return value == 1
 
-    EVP_CIPHER_CTX_ctrl(&_ctx, EVP_CTRL_GCM_GET_TAG, _finalSizeBytes, out);
+    EVP_CIPHER_CTX_ctrl(_ctx, EVP_CTRL_GCM_GET_TAG, _finalSizeBytes, out);
     *outSizeBytes = _finalSizeBytes;
 }

@@ -30,7 +30,7 @@ using namespace std;
 using namespace std::chrono;
 
 template <class FieldType>
-class ProtocolParty : public Protocol, public HonestMajority, MultiParty{
+class ProtocolParty : public Protocol {
 
 private:
 

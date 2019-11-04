@@ -8,9 +8,7 @@ INCLUDE_DIRECTORIES($ENV{HOME} $ENV{HOME}/libscapi/install/include
         $ENV{HOME}/libscapi/install/include/OTExtensionBristol)
 
 set(SOURCE_FILES main.cpp
-        ProtocolParty.cpp ProtocolParty.h ProtocolTimer.cpp ProtocolTimer.h
-        ZpKaratsubaElement.cpp ZpKaratsubaElement.h GF2_8LookupTable.cpp GF2_8LookupTable.h
-        HashEncrypt.cpp HashEncrypt.h HashAbstract.h TemplateField.cpp)
+        ProtocolParty.cpp ProtocolTimer.cpp GF2_8LookupTable.cpp TemplateField.cpp HashEncrypt.cpp)
 
 
 link_directories(/usr/ssl/lib/ $ENV{HOME}/libscapi/install/lib )
@@ -20,4 +18,4 @@ add_executable(MPCHonestMajorityNoTriplesYehuda ${SOURCE_FILES})
 
 TARGET_LINK_LIBRARIES(MPCHonestMajorityNoTriplesYehuda ntl.a
         $ENV{HOME}/libscapi/libscapi.a gmp gmpxx
-        libboost_system.a libboost_thread.a pthread crypto dl ssl z)
+        boost_system boost_thread pthread crypto dl ssl z)
