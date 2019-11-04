@@ -304,12 +304,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
     numOfOutputGates = circuit.getNrOfOutputGates();
     myInputs.resize(numOfInputGates);
     counter = 0;
-
-
-    //comm->ConnectionToServer(s);
-
-    //boost::asio::io_service io_service;
-
+    
     MPCCommunication comm;
     string partiesFile = this->getParser().getValueByKey(arguments, "partiesFile");
 
@@ -328,7 +323,6 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
         }
     }
 
-
     readMyInputs();
 
     auto t1 = high_resolution_clock::now();
@@ -340,6 +334,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCH
     if(flag_print_timings) {
         cout << "time in milliseconds initializationPhase: " << duration << endl;
     }
+    
 }
 
 
