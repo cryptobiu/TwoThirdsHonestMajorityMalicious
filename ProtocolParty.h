@@ -247,7 +247,7 @@ public:
 
 
 template <class FieldType>
-ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("MPCHonestMajorityNoTriplesYehuda", argc, argv)
+ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("TwoThirdsHonestMajorityMalicious", argc, argv)
 {
     string circuitFile = this->getParser().getValueByKey(arguments, "circuitFile");
     this->times = stoi(this->getParser().getValueByKey(arguments, "internalIterationsNumber"));

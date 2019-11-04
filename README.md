@@ -23,7 +23,10 @@ of parties). This is four times faster than the previous-best protocol of
 Barak et al. (ACM CCS 2018) for small fields, and twice as fast as the
 previous-best protocol of Chida et al. (CRYPTO 2018) for large fields.
 
+##### Note
 
+The code here is close to the specified protocol, but there are slight differences that have security ramifications.
+Thus, this code can be used for efficiency comparisons to other protocols, but is not secure as is. 
 
 
 ##### Installation
@@ -44,4 +47,6 @@ To run the the protocol open a terminal and run:
     * GF2_8LookupTable
 
 * parties_file - a file that contains the ip addresses and the port of all the parties. An example file can be found [here](../master/Parties.txt).
+
+
     

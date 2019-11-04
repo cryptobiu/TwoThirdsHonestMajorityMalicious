@@ -5,6 +5,6 @@ CMakeCache.txt
 cmake-build-debug/
 cmake_install.cmake
 Makefile
-MPCHonestMajorityNoTriplesYehuda*
+TwoThirdsHonestMajorityMalicious*
 callgrind.out.*
 *.json
