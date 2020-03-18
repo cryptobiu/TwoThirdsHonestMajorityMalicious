@@ -71,6 +71,7 @@ private:
     string s;
     int numOfInputGates, numOfOutputGates;
     string inputsFile, outputFile;
+    int numberOfTriples;
     vector<FieldType> beta;
     HIM<FieldType> matrix_for_interpolate;
     HIM<FieldType> matrix_for_interpolate_for_t_random_shares;
@@ -292,6 +293,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("TwoT
     T = 1;
     this->inputsFile = this->getParser().getValueByKey(arguments, "inputFile");
     this->outputFile = this->getParser().getValueByKey(arguments, "outputFile");
+    this->numberOfTriples = stoi(this->getParser().getValueByKey(arguments, "numberOfTriples"));
 //    if(n%3 > 0)
 //    {
 //        T++;
@@ -1449,7 +1451,7 @@ bool ProtocolParty<FieldType>::preparationPhase()
         generateSecureDoubleSharings(3*delta + keysize);
 
     //run offline for all the future multiplications including the multiplication of the protocol
-    offlineDNForMultiplication(50000000000);
+    offlineDNForMultiplication(numberOfTriples);
 
     return true;
 }
