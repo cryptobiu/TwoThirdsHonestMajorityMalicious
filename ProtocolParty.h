@@ -167,7 +167,7 @@ public:
     bool preparationPhase();
 
 
-    void offlineDNForMultiplication(int numOfTriples);
+    void offlineDNForMultiplication(long numOfTriples);
 
 
     /**
@@ -288,13 +288,14 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : Protocol("TwoT
 
 
     N = n;
-    T = n/3 - 1;
+//    T = stoi(this->getParser().getValueByKey(arguments, "T"));
+    T = 1;
     this->inputsFile = this->getParser().getValueByKey(arguments, "inputFile");
     this->outputFile = this->getParser().getValueByKey(arguments, "outputFile");
-    if(n%3 > 0)
-    {
-        T++;
-    }
+//    if(n%3 > 0)
+//    {
+//        T++;
+//    }
 
     s = to_string(m_partyId);
     circuit.readCircuit(circuitFile.c_str());
@@ -367,16 +368,16 @@ void ProtocolParty<FieldType>::run() {
         auto t1start = high_resolution_clock::now();
         timer->startSubTask("Offline", iteration);
         runOffline();
-        timer->endSubTask("Offline", iteration);
-        timer->startSubTask("Online", iteration);
-        runOnline();
-        timer->endSubTask("Online", iteration);
-
-        auto t2end = high_resolution_clock::now();
-        auto duration = duration_cast<milliseconds>(t2end-t1start).count();
-        protocolTimer->totalTimeArr[iteration] = duration;
-
-        cout << "time in milliseconds for protocol: " << duration << endl;
+//        timer->endSubTask("Offline", iteration);
+//        timer->startSubTask("Online", iteration);
+//        runOnline();
+//        timer->endSubTask("Online", iteration);
+//
+//        auto t2end = high_resolution_clock::now();
+//        auto duration = duration_cast<milliseconds>(t2end-t1start).count();
+//        protocolTimer->totalTimeArr[iteration] = duration;
+//
+//        cout << "time in milliseconds for protocol: " << duration << endl;
     }
 
 
@@ -1448,7 +1449,7 @@ bool ProtocolParty<FieldType>::preparationPhase()
         generateSecureDoubleSharings(3*delta + keysize);
 
     //run offline for all the future multiplications including the multiplication of the protocol
-    offlineDNForMultiplication(circuit.getNrOfMultiplicationGates());
+    offlineDNForMultiplication(50000000000);
 
     return true;
 }
@@ -1971,7 +1972,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
 
 template <class FieldType>
-void ProtocolParty<FieldType>::offlineDNForMultiplication(int numOfTriples){
+void ProtocolParty<FieldType>::offlineDNForMultiplication(long numOfTriples){
 
     if(isPRF)
         alternativeGenerateRandom2TAndTShares(numOfTriples,randomTAnd2TShares);
